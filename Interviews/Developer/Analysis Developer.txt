@@ -1,0 +1,7 @@
+The interview process is semi-structured, allowing for open-ended questions and discussions. This approach is used to delve deeper into specific areas of interest.
+
+The developer discusses the use of mainframe for real-time processing, specifically mentioning the use of CICS (Customer Information Control System) for supporting mobile and net banking operations.
+
+The interview guide includes a list of technical questions related to COBOL, z/OS, IBM MQ, and batch processing. It also explores potential improvements, performance criteria, and alternatives to COBOL for batch processing.
+
+The developer is asked about their interest in moving away from COBOL and the mainframe in the context of batch processing, and their thoughts on how Bankdata could transition away from the mainframe while still using COBOL.

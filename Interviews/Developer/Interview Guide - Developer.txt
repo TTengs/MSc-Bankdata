@@ -1,0 +1,88 @@
+Interview Bankdata
+There are three main types of interviews: structured, semi-structured, and unstructured.
+
+Structured interviews involve using a predetermined set of standardized questions, often administered through interviewer-completed questionnaires. While there is some social interaction, such as providing initial explanations, the questions must be asked exactly as written and in a neutral tone to avoid bias. Structured interviews are commonly used for gathering quantitative data, particularly with large groups of people.
+
+Unstructured interviews are more informal and are used to delve deeper into a specific area of interest. In this type of interview, there's no predefined list of questions. However, it's important to have a clear idea of the aspects you want to explore. The interviewee is encouraged to freely discuss events, behavior, and beliefs related to the topic, making this interaction sometimes referred to as non-directive.
+
+Semi-structured interviews fall between structured and unstructured interviews in terms of standardization. They are often associated with qualitative research. In these interviews, the interviewer has a list of themes and possibly some key questions, but their use may vary from interview to interview. This means that some questions may be omitted or the order may change based on the context and flow of the conversation. Additionally, extra questions may be added to further explore certain topics. To maintain a natural flow, it's recommended to either record the audio or take notes during a semi-structured interview. Alongside preparing themes and questions, it's important to consider opening and closing remarks to facilitate and conclude the discussion.
+
+Semi-structured interviews resemble everyday conversations but are conducted with a professional purpose and technical approach. They offer a balanced approach, providing structured guidance while also allowing for exploration of intriguing points. This flexibility is crucial for learning more about the problem during the interviews, potentially extracting all necessary information in a single session.
+
+To conduct these interviews effectively, an "interview guide" is prepared. This guide maintains a flexible structure, offering an overview of the interview and encouraging the interviewee to share their experiences from their own perspective. The interviewer must ask open-ended questions to ensure participants share their unique experiences without any pre-existing bias influencing the conversation. This requires the interviewer to approach the discussion with an open mind, free from any preconceived notions.
+Interview Guide
+INTRO:
+Anonymitet
+Hvordan det kommer til at foregå
+Kun svar på det du har lyst til
+Hvad skal interviewet bruges til
+Spørgsmål?
+
+Baggrund:
+Hvem er du? - fortæl lidt om dig selv 
+Hvad er din uddannelse? 
+Hvad er din stilling i firmaet, hvad indebærer den? 
+Hvor længe har du været ansat i Bankdata?
+Hvor længe har du arbejdet med COBOL og eller Batch?
+
+Arbejde med COBOL:
+I hvilken forbindelse med dine arbejdsopgaver arbejder du med COBOL?
+Hvordan arbejder du med COBOL? 3270 eller VSCode?
+Hvis du skulle forklare batch i Bankdata til en (med teknisk baggrund) som aldrig har hørt om det før, hvordan ville du så gøre det? Teknologier I benytter til at bruge det, hvordan det virker, input, output.
+Hvis du benytter andre teknologier til at arbejde med COBOL, hvilke er det så?
+CICS?
+z/OS?
+IBM MQ?
+(Hvis der bliver nævnt andre end de ovenstående teknologier, så spørg ind til det og hvordan det benyttes.)
+
+Batch processing:
+Har du et eksempel på et typisk program der bliver kørt gennem batch i COBOL?
+Hvis ja:
+Hvor mange gange køres det i døgnet?
+Hvad er størrelsen på data der køres igennem? (MB/s, Terabyte, Petabyte, kombination med real time data streaming)
+Arbejder I med nogle krav til performance?
+Hvis ja, hvad er performance for batch programmer? 
+Findes der værktøjer til at se metrikker på performance?
+Hvis nej:
+Har du nogle eksempler på nogle af de større/små batch programmer?
+Hvilke programmer benytter sig af resultatet fra batch programmet?
+Hvad er det der gør COBOL til et godt valg for batch processering?
+Hvor kommer dataene som der kører batch på fra?
+Hvilket format ser man de data være i?
+
+Potentielle forbedringer:
+Er der ting ved den nuværende løsning på mainframe for batch programmer som du godt ville se forbedret?
+(Mulighed for “follow-up” spørgsmål såsom)
+Har du erfaring med x?
+Hvorfor vil du gerne have ændret x?
+(Hvis man ikke kender x løsning) Kan du uddybe/forklare hvad x er?
+Arbejder I ud fra nogen kriterier eller krav til nye batch programmer?
+Performance? Skalerbarhed? Real-time processing?
+(Hvis nej) Kunne du godt tænke dig at I gjorde det i fremtiden?
+
+Alternativ til COBOL:
+Er du selv interesseret i at skulle “ud” af COBOL i Bankdata ift. Batch?
+Hvis ja:
+Hvorfor?
+Har du selv nogle alternativer, du synes kunne være interessante?
+Hvis nej:
+Hvorfor ikke? 
+Har du selv tanker om hvordan Bankdata kan komme udenom mainframe men forblive på COBOL?
+Hvis ja, hvilke?
+Hvad skal der til før at du ville skifte fra COBOL ift batch?
+
+Afslutning:
+Har du noget som, hvis jeg skulle stå for at migrere batch væk fra COBOL, mangler at vide på nuværende tidspunkt?
+Har du nogle spørgsmål her til afslutning?
+Ordliste:
+3270
+En terminal der benyttes til at skrive COBOL programmer, kigge i DB2 tabeller og rette i andre interne Bankdata systemer. Grafisk ligner det lidt tekst-tv og har minimal support for musen. Navnet kommer højst sandsynligvis fra https://en.wikipedia.org/wiki/IBM_3270, da det ligner lidt noget der kunne have kørt på de maskiner. Til interviewet kan de godt finde på at kalde det for “boks”, da det er en Bankdata version af 3270.s
+CICS
+IBM CICS (Customer Information Control System), så vidt jeg forstår på nuværende tidspunkt er det et bindeled gennem mainframe og COBOL/Java.
+https://en.wikipedia.org/wiki/CICS
+z/OS
+IBM styresystem der kører på mainframe, jeg “tror” at det er det som kører på Bankdatas mainframe lige nu. Det ville så være den som CICS kommunikerer med.
+https://en.wikipedia.org/wiki/Z/OS
+IBM MQ
+Message Queue fra IBM der oftest benyttes i samarbejde med z/OS og CICS i gamle IBM mainframe systemer. Da MQ arkitekturen tillader for decentraliserede systemer, benyttes det også til java programmer som kører på andet en mainframe.
+https://en.wikipedia.org/wiki/IBM_MQ

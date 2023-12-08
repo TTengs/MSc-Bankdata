@@ -1,0 +1,695 @@
+Transcribed Interview from Manager.
+
+The Speaker 1 is me and Speaker 2 is the developer.
+
+00:00:00 Speaker 1
+
+Vil gerne starte med at sige, at du har. Rig mulighed for at kunne forlange at være anonym igennem det hele, hvis Det er. 
+
+00:00:17 Speaker 1 
+
+Så det skal du bare sige, Det kan være både nu eller efter. 
+
+00:00:20 Speaker 1 
+
+Selve interviewet som jeg prøvede at forklare før. Det er at Jeg har nogle spørgsmål øhm, du skal være fri til at snakke så meget ind i det eller rundt om de. Så skal jeg nok stoppe dig hvis det går for langt væk fra det. Rigtig mange af spørgsmålene er også åbne for at du har mulighed for at kunne, ja, komme til bredt omkring det hele, da det også vil det jeg skal bruge det til. 
+
+00:00:42 Speaker 1 
+
+Du skal bare svare også på det du kan og det du har lyst til at svare om.
+
+00:00:47 Speaker 1 
+
+Som sagt før også skal jeg bruge det til mit speciale til at kunne vide lidt mere om det her,  Sådan så jeg også ved hvad jeg skal spørge om på et andet tidspunkt. Yes. 
+
+00:00:57 Speaker 1 
+
+Har du nogle spørgsmål? 
+
+00:00:59 Speaker 2
+
+Næh
+
+00:01:00 Speaker 1 
+
+Godt, så tænker jeg på, om du måske bare vil starte med at forklare lidt omkring dig selv og din baggrund. 
+
+00:01:12 Speaker 2 
+
+Ja. Jamen øh jeg hedder Bjarne Beck, Jeg har været på bankdata siden. 90’ tror jeg. 
+
+00:01:14 Speaker 2 
+
+Og har egentlig beskæftiget mig. Bredt med alt, hvad man kunne kalde core banking. 
+
+Øhm og stort set alle discipliner fra at kode selv, være projektleder, jeg har været forskellige arkitektroller. Fra applikationsarkitekt til leadarkitekt. 
+
+00:01:40 Speaker 2 
+
+Ja, Jeg har været med i det strategiske initiativ omkring move to cloud for eksempel og den slags. 
+
+Ja så bred bred baggrund. 
+
+00:01:53 Speaker 1 
+
+Kan du forklare lidt omkring, nu nævnte du selv core banking, øh, i bankdata term hvad det egentlig er? 
+
+00:01:59 Speaker 2 
+
+Jamen det er kundeadministration, alt omkring konti inklusiv rente gebyr og så videre. Øh noget betalingsformidling, der er vi ved at være nogle år tilbage i tid. 
+
+00:02:25 Speaker 1 
+
+Hvad hedder det? Hvad er din stilling nu så? I firmaet hvor det er nu?
+
+00:02:39 Speaker 2
+
+jamen nu er min min stilling hedder at jeg lead consultant, men i praksis er jeg projektleder for det konverteringsprojekt, vi kører lige nu. 
+
+Så jeg sidder i Det team der har med konvertering og gdpr at gøre. Og blev hentet hertil som en del af et generationsskifte, fordi Vores. Mangeårige mester konvertering har programmeret. Han går på pension. 
+
+00:02:57 Speaker 1 
+
+Hvor længe har du arbejdet så med COBOL og batch i den forstand?
+
+00:03:04 Speaker 2 
+
+Jamen det. Altså hans on COBOL har Det har jo været on-off fra, fra dag et og det sker også stadigvæk at jeg sniger mig til. Og kode et program eller 2. Bare fordi jeg elsker håndværket i virkeligheden.
+
+Men ellers har det været stærkt afhængig af rolle, og hvor man var henne i projektforløb og Sådan noget, Jeg har meget haft. Hvad skal man sige? Ja en arkitekt trolle en overordnet, 
+Hvad skal man sige? Mål, overordnet ansvarlig for, øh, Forretningsløsningen i de projekter, Jeg har gennemført.
+
+Og Det har jo ikke altid betydet. Det har jo ikke altid involveret meget af hands on, men Jeg har været tæt på det og når ind imellem er der jo ting, Der er så kompliceret, så de er næsten umulige at beskrive, så nogle gange nemmere at kode dem selv. 
+
+00:04:06 Speaker 1 
+
+Det giver i hvert fald god mening. 
+
+Ja, så for at sige det lidt ligesom du siger selv nu, at det ikke er meget COBOL du piller ved nu. 
+
+Men det er mere igen, ligesom du siger, at hvis din arbejdsopgave er kommet ud på, at det måske ender med at blive for indviklet, at du skal til at forklare en anden at lave det, så er det hurtigere og nemmere at gøre det selv. 
+
+00:04:32 Speaker 2 
+
+Jaer 
+
+00:04:33 Speaker 1 
+
+Og det vil vel mest af alt være i batch programmer, hvis det skulle være det, eller det ville også være normalt andre COBOL programmer? 
+
+00:04:40 Speaker 2 
+
+Altså PT er det mest batch orienterede ja, men øh Det har jo også været. Andre 
+
+Speaker 1
+
+okay. 
+
+00:04:50 Speaker 2 
+
+Man kan få en fascinerende debat om, hvornår noget er batch. Er noget, der står og lytter på MQ-kø batch eller er det? Ja.
+
+00:05:01 Speaker 1 
+
+Det kan vi snakke om lidt senere. Hvordan arbejder du med COBOL nu så? 
+
+Hvis du skulle gøre det? 
+
+Det er Sådan lidt i form af systemer du bruger til at arbejde med det. 
+
+00:05:21 Speaker 2 
+
+Jamen, Der er jeg jo traditionalist, fordi jeg bruger, jeg bruger det for sjældent til, at Det har givet mening for mig at tage. 
+
+Og tage de nye udviklingsværktøjer i brug, så Jeg tror, hvis jeg havde, hvis det havde været mit main job nu. 
+Så så havde jeg formodentlig været kørende på det. 
+
+00:05:36 Speaker 1 
+
+Ja og med nye udvikling som mener du VSCode løsningen?
+
+Speaker 2
+
+Ja
+
+Speaker 1
+
+Så du holder dig mere Til 3270 og Er det “boks” man også kalder det nogle gange, for lige at have hele terminologien med 
+
+00:05:47 Speaker 2 
+
+Lige præcis. 
+
+00:05:56 Speaker 1 
+
+Øhm, ja, Hvis du nu skulle forklare batch. 
+Og Det kan være i både, det Sådan som du forklarede før, der kan være mange forskellige måder og det. Men måske hvis du skulle prøve at forklare det mest typiske batch program, øh, Til mig nu Med en teknisk baggrund, men om om at jeg ikke rigtig havde forstand på det, ellers hvad der ellers Var med i Hele løsningen, hvordan vil du så måske forklare det nu med henblik på både Sådan en teknologi og i benytter sammen med det og. 
+
+00:06:27 Speaker 2 
+
+Men Jeg tror, jeg ville starte med formålet for det typiske batchprogram. og, og basically falder det 2 kategorier for mig at se i hvert fald nu. Tidligere var der en tredje kategori, der var mere i spil, men jeg tænker. 2 væsentlige kategorier det det der. Periodiske hændelser. 
+
+Altså noget som, som skal foregå på, på bestemte tidspunkter. Og i større mængder, og som du ikke bare kan gøre afhængig af, at jeg gør det, når den 1 bruger har behov for at se det eller noget. Et eksempel på på det kunne være Sådan noget som rentetilskrivning, fordi Der er noget lovgivning, der hænger på på bagkanten af det og siger, at. 
+Hvis du vil have fradrag for din rente, så skal det være tilskrevet i det rigtige år og Sådan noget. Så så rigtig mange banker har For eksempel noget rentetilskrivning, Ultimo året, og hvis ikke det kører ultimo året, så får du en hel masse problemer med ja, jura og forretning egentlig på bagkanten af det. Det er Sådan en klassisk ting, og også rigtig mange af de ting, der kunne også være gebyrer, eller det kunne være opkrævning af afdrag eller alt muligt andet, som ligesom er aftale bundet med kunden. 
+
+At det ikke er Når det lige passer os eller hvad skal man sige. Men men men på helt specifikke terminer. Øh det er Sådan den ene kategori af dem, en anden kategori er Det jeg ville kalde. 
+
+Hvad skal man sige fast fast frysning af. Af bestemte statusser i forhold til indberetning og alt muligt andet har vi, har vi behov for at få frosset, hvad vi synes. Tilstanden var ved døgn skiftet typisk. 
+
+Og Det kan man selvfølgelig gøre på. Rigtig mange andre måder også end batch, hvis man, hvis man arrangerer sin datamodel efter det, men i Vores virkelighed. Lige nu sker det typisk via batch processer, der udtrækker og fryser et grundlag, der siger Sådan her, så kunden ud ved det her døgn skifte, Sådan her, så din saldo ud og alt muligt andet, som ligesom er grundlaget for, at Vi har et fælles billede af. Det her var verden. 
+
+00:08:50 Speaker 1 
+
+Øhm, Nu nævner du det der med Ja det kunne være. Ja det der med Sådan noget frysning af forskellige data, forskellige kunder og så have den rykket over. Det ville jo så være Sådan en input output fra det. Ligesom program vil måske være data fra nogle tabeller som kunne bliver jeg processeret og puttet over i en anden tabel af en art
+
+00:09:11 Speaker 2 
+
+Ja også noget der egentlig bare bliver, alt bliver ikke gen-repræsenteret I en tabel struktur og noget bliver egentlig bare udtrukket og ligger som datafiler. 
+
+00:09:22 Speaker 1 
+
+OK. 
+
+00:09:25 Speaker 2 
+
+Fordi vi ikke altid har behov for de der snapshots, kan man sige i over længere periode end, end at vi bare kan have dem liggende i dataudtræk. 
+
+00:09:41 Speaker 1 
+
+Jaer, er der nogle, hvilke andre teknologier benytter I i hvis man skulle ligesom sige Sådan en pipeline, på nogle af de her batchprocesserings typer? 
+
+00:09:52 Speaker 2 
+
+Og overordnet set kan man sige, så er alt jo i den verden orkestreret af OPC eller det hedder et eller andet Tivoli. Det hed OPC i gode gamle dage, som er det afviklings styringsværktøj, som ligesom er det, der sikrer, at ting kører, når det skal køre og ting kører i den rækkefølge. Det skal køre, altså kan styre afhængigheder og kørselsterminer og alt muligt andet. 
+
+00:10:21 Speaker 1 
+
+Du sagde OPC?
+
+Speaker 2
+
+Ja, og hvis du googler det, så hedder det noget andet. I dag. Men du kan finde det Jeg kan sgu ikke huske Hvad det hedder faktisk. 
+
+Det er Sådan man kan sige det Sådan et orkestrering værktøj så vi, så jeg ikke skal gå og huske, når Jeg har bestilt noget skal køre den tredje weekend i alle måneder. Jamen så er det der, man registrerer det og så sørger. Den for, at det sker dybest set. 
+
+00:10:54 Speaker 2 
+
+Ja og det det det det starter jo så diverse programmer som jo enten foretager hvis Det er de første vi taler om som lavede rentetilskrivning eller noget, så er det jo typisk opdaterende. 
+Egentlig den store mængde undersøger, hvad er det, der skal tilskrives i dag og så egentlig tygger sig igennem og sørger for, at alle de, der skulle have tilskrevet renter de får tilskrevet rente. 
+
+Som eksempel. 
+Og tilsvarende i de der mere snapshots lignende ting. Jamen så starter den jo også på et veldefineret tidspunkt, som jo typisk er at man har. Det er jo Sådan et kæmpe matrix af ting der kører hen over natten med styret afhængigheder til hinanden rigtig meget. Og så prøver man jo at finde det punkt, hvor man kan sige Jeg er færdig med i går. Jeg er ikke startet på i dag, så det her er mit døgn skifte status. 
+
+Og det lyder mere trivielt end der. Det er ikke. Det er ikke super enkelt. 
+Ja og de vil de vil jo typisk bare foretage udtræk af nogle aktuelle data og fryse dem og sige det her. Det er Vores tilstand. 
+
+00:12:02 Speaker 1 
+
+Nu nævner du det ikke er super enkelt, hvorfor? 
+
+00:12:06 Speaker 2 
+
+Det er Fordi Rigtig mange systemer lever jo af. Har jo store realtids elementer også, og man kan sige hvornår hvornår er noget i går hvornår er noget i dag, kan Man sige på. 
+
+Og i nogle systemer har man gjort sig stor umage for at kunne skille lidt. Det gælder Sådan noget som. Bogføring for eksempel fordi Det er der, Der er igen nogle lovgivningsmæssige ting, du er nødt til at vide, hvornår er den officielle bogføringsdato på det her og det, Det kan man ikke bare gøre som. 
+
+Tidspunktet Det er bogført på, igen. Kunne du have noget lovgivning for at blive i samme eksempel. For eksempel, hvis nu den der rentetilskrivning ultimo året blev forsinket. 
+
+Hvis ikke det bliver bogført stadigvæk som 2023, nu vi når til til slutningen af det her år, men så er du igen ude i, så får du ikke rentefradraget for det og alt muligt andet. Du har ikke overholdt dine aftaler med kunden og din fortsatte beregning vil blive forkert. Altså Der er rigtig, rigtig meget i det, så det der med egentlig at definere hvornår er hvornår Det er Sådan mere logisk niveau end det bare at kigge på klokken at at nu er vi skiftet et døgn i hvert fald i mange systemer. Andre systemer har Sådan lidt mere hvis Det er mere, hvad skal man sige? 
+
+Stamdata agtig som kunde typisk er jamen, så er det jo egentlig mere bare at sige, nu er det nu og bare sige det der var før Det var i går det der efter Det er i morgen. 
+
+00:13:37 Speaker 1 
+
+Ja for at blive lidt igen, måske i teknologi-snakken nu her nu nævnte du. Selv det her OPC til orkestrere det. Hvilken måde Arbejder det sammen med for eksempel det her z/OS, som vi også har snakket om før.?
+
+00:13:56 Speaker 2 
+
+z/OS er jo egentlig bare et styresystem. Det kan du sammenligne med Windows på en pc kan man sige, og OPC er så egentlig en stor central applikation. 
+
+00:14:06 Speaker 1 
+
+Som kører på z/OS?
+
+00:14:07 Speaker 2 
+
+Som kører på z/OS og som altså alt på mainframe kører på z/OS. Dybest set. 
+
+Ja i praksis. så så Det er bare en applikation der kører på z/OS og som egentlig står og orkestrerer og starter en hel masse andre applikationer op, så den initierer. Det kan jo selvfølgelig både være nogle hvad hedder det COBOL programmer der bliver afviklet? Det kan være det kunne også være database utilities, eller det kunne være java z/OS programmer der bliver der bliver startet så så Det er egentlig bare Sådan en orkestrerings ting den kan egentlig starte hvad som helst. og har alle mulige faciliteter, der gør, at den kan starte på tid, eller den kan starte når der dukker en Hvis vi får en leverance udefra, som nogle griber og ligger et bestemt sted, så bare det, at datasættet kommer og kan få dem til at vågne og sige, nå, men så skal jeg gøre Sådan her Eller den kan stå og lytte på en MQ eller ja, Der er mange ja. 
+
+00:15:10 Speaker 1 
+
+Hvis vi går tilbage til nu, sagde du før, at som udgangspunkt kører mainframe på z/OS, hvad er alternativer til det? Eller du lyder, som om der var nogle andre muligheder? 
+
+00:15:26 Speaker 2 
+Ja, men altså mainframen har udviklet sig rigtig meget. I virkeligheden kan du spinne. 
+Du kan jo køre containerized applikationer. Jeg tror Sådan set vi kunne køre Kubernetes cluster på mainframe, hvis vi synes at Det var det vi ville. 
+
+for eksempel
+
+00:15:39 Speaker 1 
+
+Det var bare det
+Så nævnte du det her også med for eksempel så igen, hvis Det er OPC der kører og. Venter på at høre for eksempel, som jeg forstår det. Den kunne også købe de her Sådan lidt triggers forskellige steder om Det var en MQ. Eller om Det var Ja, opdatering af filer måske. 
+
+Hvilke slags MQ’er er det? For eksempel. 
+
+00:16:06 Speaker 2 
+
+Jamen Det er jo i praksis er Det er jo IBMs MQ, vi bruger. 
+
+00:16:12 Speaker 1 
+
+Bruger I  forskellige andre end det, eller? 
+
+00:16:15 Speaker 2
+altså den decentrale platform har jo også MQ instanser. Dem er jeg ikke super skarp, men. 
+
+00:16:21 Speaker 1 
+
+Nej, men når Det er nede i COBOL og batch, så ville det være IBM MQ for det meste?
+
+Speaker 2
+
+ja
+
+00:16:29 Speaker 1 
+
+Du nævnte også det her Java Z/OS, kan. Du forklare lidt om det, du ved om det. 
+
+00:16:34 Speaker 2 
+
+Jamen Det er jo egentlig bare altså ligesom mainframe understøtter COBOL, så kan du også kode på mainframe i alle mulige andre sprog PL1 og java så videre og Vi har også En del applikationer faktisk, der kører java på Z/OS. 
+
+Det er platformen som Sådan har Sådan en lidt underlig skæbne, fordi et eller andet sted er den strandet og har fået status af ikke at være strategisk platform. Men virkeligheden er at. 
+
+00:17:07 Speaker 2 
+
+Nogle af Vores helt kritiske klients leverancer kører på det. Den her kamp helt kamp projekt der var med Vores. Den nye markedsplatform den integrerer med. Bankdag, altså med bogføring og alt muligt andet, i, igennem Java z/OS. Så så Det er lidt et paradoks, at Vi har så meget kritisk kørende på det, samtidig med at at. 
+
+00:17:34 Speaker 2 
+
+At Java z/OS egentlig har en status som ikke strategisk. 
+
+00:17:39 Speaker 1 
+
+OK. 
+
+00:17:40 Speaker 2 
+
+Det kan man godt undre sig over en Stille stund . 
+
+Og Vi har også en del andre, altså det der egentlig drev ibrugtagningen er, at java har selvfølgelig ud af boksen. Oplagte handles til at håndtere XML og JSON og så videre som COBOL i hvert fald for XML delen. Ikke på samme måde har opnået, og i forhold til JSON fik senere vil jeg sige. 
+
+ Så Det var ligesom det, der drev ibrugtagningen af det. Ja, så har det faktisk lige PT også den tillægsgevinst at når man kører java z/OS, og Det er jo fordi IBM gerne vil have pushet det i virkeligheden. Så afvikler det på en anden processor type, som bliver afregnet til en anden pris, så i virkeligheden kan man sige, hvis vi, hvis vi laver noget i COBOL. 
+
+Og afvikler og laver noget, java z/OS i samme opgave og givet det tager samme ressourcer. Så er det faktisk billigere at gøre det. java z/OS
+
+00:18:44 Speaker 1
+
+Okay. 
+
+00:18:46 Speaker 2 
+
+Antagelsen er, at hvis vi bliver rigtig glade for det at flytte rigtig meget load over, så ændrer vi nok prissætningen. 
+
+00:18:51 Speaker 1 
+
+Det er Selvfølgelig også det 
+Men altså selvfølgelig også en diskussion. Måske i hvad? 
+Kører de på samme hastighed i både java z/OS og eller om Det er COBOL. Hvis man siger rent performancemæssigt, om det så ender med alligevel. Egentlig har kostet samme 
+
+Speaker 2
+
+lige præcis. 
+
+Speaker 1
+
+Det er måske også en anden spørgsmål, 
+
+Speaker 2
+og Det er der ikke været dyrket meget i, fordi i dag løser de i virkeligheden typisk 2 forskellige opgaver. Det ligger meget der, hvor vi bruger Java z/OSer  rigtig meget i Sådan et integrationslag. 
+
+for at udnytte javas Fordele i Det kan man sige ja ja. 
+
+00:19:26 Speaker 1 
+
+Ja Sådan lidt Sådan bindeleddet måske til mig af java programmer der også kører ellers hos bankdata. 
+
+00:19:32 Speaker 2 
+
+Ja men også til til eksterne parter. Hvis du, hvis du har aftalt du kommunikerer i et XML format eller i et eller andet JSON du står og så ligesom. 
+Det er ikke XML er i hvert fald specielt ikke det. Jeg ville kalde det naturligt format for COBOL. Den er ikke super komfortabel med det. 
+JSON er bedre, men men men klart bedre understøttede stadig. 
+
+00:20:02 Speaker 1 
+
+Så tænker jeg, vi går videre lidt til noget andet. 
+
+00:20:07 Speaker 1 
+
+Og så snakkede vi lidt om de her forskellige typer af, batch Programmer Der er. Kan du tænke på et Sådan, Måske et eksempel på et typisk Sådan meget typisk program, der kører nu, som du måske har lidt kendskab til. 
+
+00:20:28 Speaker 2 
+
+Hvordan fanden definerer man et typisk program? 
+
+00:20:33 Speaker 1 
+
+Ja ja, måske et. Det er måske et der ikke Er så stort, skal vi sige et simpelt i stedet for et mere simplere batch program 
+
+Speaker 2
+
+men det kunne typisk være nogle af de der der laver snapshot agtige ting. 
+
+Speaker 1
+Ja, har du et mere Sådan konkret? Du kan tænke på? Måske der laver de her snapshots 
+Speaker 2
+
+Det kan jeg finde i hvert fald. Jeg sgu ikke lige huske det i hovedet, men Der er Der er nogle 1000 at vælge imellem. 
+
+00:21:05 Speaker 1 
+
+Ja, og Det var dem hvor at det både var nu sagde du snapshots der kunne deale med det her problem med hvornår går man over døgnet eller de her tidspunkter? Men Der er vel også, Der er også nogle af dem der kører flere gange. I døgnet eller
+
+00:21:17 Speaker 2 
+
+ja, Det er der masser også der gør ja. Fordi den her det her periodiske opgaveløsning kan jo også være. Det er Sådan på kanten på kanten af af de der kategorier vi startede med, men Der er jo også noget, man vedtager, det her. Det undersøger jeg hvert kvarter. Nogle gange, fordi man vurderer, at Det er for dyrt at gøre det i den transaktion, der måske skaber forandring. Og så undersøger man periodisk noget effekt af noget. 
+
+Og de kan jo køre. Ganske hyppigt. Jo ja. 
+
+00:21:56 Speaker 1 
+
+Nu sagde du. Igen, at der var tusindvis af dem af. Eksempler på det. Men har du måske en? 
+
+00:22:05 Speaker 2 
+
+En sådan cirka på hvornår man snakker de her batch programmer, og vi snakker mængden af data, der plejer at køre igennem dem. Hvis vi snakker enten megabyte i sekundet, eller hvis vi snakker, hvis vi sagde fil typer i sig selv, og det terabyte at man er oppe og snakke eller er det mere eller mindre eller 
+
+Speaker 2
+
+det igen. Utroligt forskelligt, men man kan man kan sige Det er jo Det er jo Det er jo en spidskompetence, kan man sige mainframe verdenen det her med at håndtere store datamængder på det. Men men Sådan nogle Snapchat ting kan jo være alt fra at du fryser kundetyper som er ingenting til hele kunden til hele populationen af kunder som er lidt mere data eller eller du kan have en batchproces der der tager. Altså en jeg bogfører alle posteringer på et bogføringsdøgn, som jo er en del millioner på på store bogføringsdage, og dermed er det meget, meget forskelligt og afviklingstid er jo også fra fra sekunder på nogle af de der ting til timer. 
+
+00:23:17 Speaker 1 
+
+Ja, du har ikke noget måske Sådan. Umiddelbart Sådan et bud på, selv hvis det vi snakker de helt store eller Sådan noget, hvis man siger det. Så når i Siger rigtig store mængder data. Sådan, hvad det egentlig er? 
+
+00:23:29 Speaker 2 
+
+Og man, men det kommer an på, hvad er det mængden af data, den processerer undervejs eller er det mængden af data, den outputter eller er det ja. 
+
+00:23:35 Speaker 1 
+
+Har du, har du selv nu? Altså på begge for eksempel, hvis. Det skulle være det eksempler. 
+
+00:23:42 Speaker 2 
+
+Ikke nogen, hvor vi rigtig har regnet på mængden af data på den måde. Faktisk
+
+Speaker 1
+
+OK
+
+00:23:51 Speaker 2 
+
+men Jeg kan finde nogle relativt store. Altså der laver stort output for eksempel ja. 
+
+00:23:59 Speaker 1 
+
+Ja, men Det er noget i ligesom I har den data, ligesom ikke, man kan finde hvis det er eller Sådan noget man. Kan se
+
+00:24:04 Speaker 2 
+
+Det kan man. 
+
+00:24:09 Speaker 1 
+
+Ud over egentlig noget af det her batch processering også I kører og og selvom at de har de her der ligesom trigger måske flere gange om dagen også har i noget der kører måske enten kombination eller kører i noget Sådan? Hvad hedder det realtids processering? ved siden af måske eller samkørende med noget batch lignende noget real time processing. 
+
+00:24:31 Speaker 2 
+
+Altså Jeg vil jo sige langt hovedparten af det der sker på mainframen sker Real tids. Ja så alt understøttelse af hvad der sker i din mobilbank i din netbank i alt muligt andet står jo snurrer i real tids. Typisk igennem CICS .
+
+Speaker 1
+
+kan du forklare lidt hvad kiks er? 
+
+Speaker 2
+
+CICS er sådan en transaktions server som som er rigtig god til at håndtere scopet omkring en transaktion en en realtids transaktion du starter for en eller anden grænseflade og så ligesom holde kontekst rundt om transaktionen sikrer transaktionelt scope. Som jo er et af en af de der modenhed parametre. Jeg siger, jeg savner for, før at vi for alvor begynder at kigge på alternativer, som for eksempel sikrer, at uanset hvor Jeg er henne i min transaktion, hvis jeg finder ud af undervejs det her, det går galt, så skal jeg ikke som programmør hernede tænke på, hvordan slap jeg af med alt det andet, der var sket før? Det kan ligesom. Den kan ligesom sørge for at undo hele transaktionen. Vi var på vej på vej i. 
+
+Ja og Det er egentlig CICS har masse, altså Det er et kæmpe stort emne, men Det er det dybest, altså transaktions server helt overordnet og har. Ja meget et gammelt produkt kan man sige, og dermed også et super modent produkt, som som gør rigtig meget for at indkapsle transaktionen og sørge for, at man ikke kan forstyrre hinanden og og så videre. 
+
+00:26:06 Speaker 1 
+
+Kan du måske forklare nu siger du? Det er et meget stort emne, og det kunne måske være en samtale for anden gang, men om du kunne måske i. Mere generelle termer måske lidt Sådan et Sådan udefra, hvordan CICS så egentlig hænger sammen i det her med mainframe og z/OS og de her MQ’er nu vi snakkede om før?
+
+00:26:24 Speaker 2 
+
+Jamen CICS er jo CICS er jo egentlig endnu en applikation Som kører på z/OS, og som så egentlig understøtter, at du kan afvikle transaktioner ind i den, kan man sige. Lidt ligesom selve DB2’en er en applikation der kører på z/OS så det men. Det er jo. Sådan nogle store grundelementer kan man sige i en mainframe installation. 
+
+00:26:49 Speaker 1 
+
+Det tror Jeg er fint. 
+
+Ja tilbage til nogle af de her igen. Måske mere måder at i arbejder på når i endten arbejder med batch programmerne eller når i designer nye, til dig måske og som arkitekt om i arbejder med nogle krav til både Sådan performance af den også når i udvikler. 
+
+Kan både være sådan noget med svartider, oppe tider eller ja. 
+
+00:27:22 Speaker 2 
+
+Det er relativt sjældent, at i hvert fald når vi taler batch udviklingsdelen af det, så er det sjældent svartiden som svartiden, men ressourceeffektivitet er en kæmpe ting, fordi du typisk håndterer. 
+Store mængder, og det betyder for eksempel Sådan noget, som hvordan får du designet din database access? 
+
+Har du de indekser, der skal til. Gør en kæmpe forskel, og det bliver der spekuleret rigtig. Meget i “..” og. Hvad skal man sige med? Nogle gange bliver bliver processors delt op undervejs for at tilgodese det forhold i stedet for bare at gøre alting. På en gang, fordi nogle Man kan sige, Der er jo nogle ting du ikke skal dekomponere, hvis det ligesom er vigtige for at have. 
+
+Scope at at det bliver gjort på en gang, så skal det jo gøres på én gang. Men andet er Sådan set ligegyldigt og der kan du nogle gange få en stor effektivitetsgevinst ved at og dekomponere det og måske sørge for at du henter din kunde i en kunde orden og din konti, en konto orden og så videre. 
+
+00:28:33 Speaker 1 
+
+Ja, så du sagde meget Sådan med ressourcer i, som måske Sådan “..” den instans i sig selv Der bruger. Og Det er måske igen det vi snakkede om med betalingen på, hvad det egentlig koster at køre på mainframe om det? Ja, Det er i den dur ligesom i så kigger på. 
+
+00:28:48 Speaker 2 
+
+Ja meget og og man kan også fordi at en ting er jo prisen, men men i modsætning til en cloud verden hvor man siger, at hvis du hvis du overforbruger ja så så køber du dig fra det. Det kan du også på en mainframe, men Det er en helt anden. Det er en helt anden prismodel, fordi de peak på året bliver du Sådan set straffet for hele. Året, og derfor derfor har du i praksis lagt et loft ind i din mainframe access, som gør, og hvis du støder mod den, jamen, så begynder man ligesom at slås om ressourcerne. 
+
+00:29:07 Speaker 1 
+
+OK. 
+
+00:29:19 Speaker 2 
+
+Og Der er andet store tema man kan dykke i, hvis man synes Det var sjovt. Det ville jeg måske ikke anbefale, men Det er. Det er Sådan nogle der ligger sind rige regler om, at du Sådan set godt kan have lidt overtræk i en periode, men ikke men kun i en begrænset periode. Og hvis du har haft det, så bliver du pludselig noget der hedder cappet, så bliver du altså hårdt restriction på de på dit forbrug. Sådan noget hvis man gør det om natten, så starter Vores online systemer med at være cappet, så får brugerne en dårlig oplevelse og Sådan så den så så Det er meget i den dur. 
+
+00:29:56 Speaker 1 
+
+Og nu siger jeg det ligesom bliver cappet. Eller hvad hedder det? Det forbrug i har? Hvad er det så? Hvad ville det være Forbrug af? 
+
+Speaker 2
+
+Det er CPU ressourcer. Ja altså Det er typisk det, der bliver spekuleret i selvfølgelig selvfølgelig overforbruger man ikke. Diskplads og så videre, men Det er ikke. Det er typisk ikke det der bliver spekuleret i? 
+
+00:30:18 Speaker 1 
+
+Nej. Er det også noget som? Jamen måske Sådan en nu siger i CICS. Dermed er det transaktioner i alt den vej igennem eller måske Sådan kald til jeres DB 2 instanser. 
+
+00:30:31 Speaker 2 
+
+CICS er udgangspunktet jo ikke batch, kan man sige. Det er lige noget realtids transaktions ting, men typisk bliver. Jeg vil sige de fleste gange man ser overforbrug af cpu ressourcer, så er det i forbindelse med database access.  Fordi Det er ligesom der du DB 2 er jo venlig. Så hvis du spørger om noget så gør den jo hvad som helst for at svare den kommer ikke ud og siger det kunne være fedt hvis du havde lidt flere oplysninger eller altså den den gør, hvad den hvad hvad der skal til hvis den tror den kan svare og nogle gange kan det godt være en stærk uhensigtsmæssig access fordi du lige fik fortalt den for lidt i forhold til indeks og alt muligt andet du har du har givet og Det er typisk noget der bonner ud. 
+
+Hvis Det er dårligt lavet, hvis kan man sige det ja. 
+
+00:31:22 Speaker 1 
+
+Findes der nogle værktøjer til, ligesom at holde øje med de metrikker. På jeres batchprogram?
+
+00:31:30 Speaker 2 
+
+Ja det gør der. Og man kan sige, på den måde kan man sige man man man kan også sige man er lidt forkælet i en mainframe verden i virkeligheden, fordi man kan sige noget af det som. 
+
+ Som Jeg kan høre Vores platform 2 0 teams arbejder rigtig meget med opbygge egne metrikker og få lavet en overvågning af den rigtig meget af det her er egentlig centralt overvåget. 
+
+Og hvis noget pludselig bonner ud. Så får du egentlig bare besked om, at Der er noget du skal kigge på. Og i din udviklingsproces. Jamen så er der rig lejlighed til at se. Hvad er forbruget egentlig på det her? 
+
+00:32:11 Speaker 1 
+
+Ja, når du siger for eksempel banker ud, så. Kunne det være cpu forbrug? 
+
+Speaker 2
+
+Det kunne være cpu forbrug eller at afviklingstiden pludselig er stærkt forøget eller den slags. 
+
+00:32:20 Speaker 1 
+
+Og det giver mulighed for At, ligesom man kan bruge jer til at kigge. På de specifikke ja programmer. 
+
+00:32:27 Speaker 2 
+
+Ja centralt fordi at Det er så at det rammer bredt, kan man sige Det er jo Det er jo det her med, at vi bruger den samme ressourcepulje og derfor hvis Jeg er overforbruger voldsomt, så går det ud over nogle andre. I sidste ende går det ud over nogle kunder, der ikke får den oplevelse de vil have. Så har vi en centralt nogen der holder øje med, om tingene bonner ud over tid eller pludselig får en anden opførsel og og ligesom hvad skal man sige? 
+
+Man kan ikke sige de har serveretten, for Det har du jo selv for at sørge for. Men men men du får ret hurtigt en notifikation der siger Jeg tror du har et problem fiskefjæs ja. 
+
+00:33:12 Speaker 1 
+
+Måske det hurtige eksempel på hvilke slags andre programmer der så benytter sig af resultatet af hvad hedder det de her batch programmer? Det kunne så være for eksempel andre batch, men det kunne også være. Har du nogen eksempler på det? 
+
+00:33:28 Speaker 2 
+
+Jamen en del altså typisk de der snapshot ting. De bliver jo også. Typisk sendt i. 
+Altså Vores landingszone til viderebearbejdning i noget SAAS, hvis vi taler nogle af de der periodiske opdaterede ting, jamen så indgår de jo egentlig bare i den opdaterede pulje, så alle dine online transaktioner og alt muligt andet står jo dybest set også. Og bruger det ikke Sådan det direkte resultat, men bare af at din at dine data er opdateret. Kan man sige. 
+
+Men ellers er flowet meget. Altså Sådan det direkte. Flow mellem programmer er jo meget fra batchprogram til batchprogram eller ude i et SAAS verden eller måske batchprogrammet trigger noget MQ som trigger noget andet derude. 
+
+Og det kunne. Og det næste batchprogram kunne godt være noget, der står et andet sted. Det kunne være en clearings leverance vi skulle af med, som vi sender ud eller noget af den slags. 
+
+00:34:26 Speaker 1 
+
+Hvad er det? Hvis du skulle putte det i. Dine ord, hvad er det så du mener måske gør COBOL til et godt valg i form af bruge det til batch processering? 
+
+00:34:42 Speaker 2 
+
+Altså COBOL er et udmærket valg til de fleste finansielle. Kode opgaver vil jeg sige. Men jeg tænker egentlig ikke. Altså for mig. For mig er selv om Det er COBOL eller et andet værktøj, synes jeg ikke er super interessant. Jeg Jeg tror Det er en interessant debat. I min optik er måske mere mainframe eller ej 
+
+Speaker 1
+
+ja. 
+
+00:35:09 Speaker 2 
+
+Og de 2 ting hænger jo ikke nødvendigvis sammen. 
+
+00:35:14 Speaker 1 
+
+Jeg skulle ja spørge på en anden måde, så hvorfor mener du som måske eller tænker at mainframe er god til batch? 
+
+00:35:24 Speaker 2 
+
+Jamen jeg mener, og jeg mener med mainframen er god. Jeg vil sige det bredere jeg mener, mainframen er rigtig god til finansiel IT på mange punkter, blandt andet fordi at Vi har det her brede transaktionelle scope. Vi ved, den er rigtig skarp til at håndtere. 
+
+Hvis ting fejler, at du kan genstarte veldefineret og. Altså generelt bare en modenhed som gør at du kan at du er på sikker grund når du skal navigere i det. 
+
+En god en god overvågning, en god altså som vi talte om før. Orkestrerings løsning. Altså den her OPC facilitet. 
+
+00:36:15 Speaker 1 
+
+Vi har snakket lidt før også om. Dataen der kommer ind. Der snakker vi om det kunne jeg være fra DB 2 eller det kunne være filer og hvis vi snakkede om de her filer hvor at det? 
+
+At, Det er bare Sådan nogle plain. Tekstfiler eller Sådan formatet af dem. 
+
+00:36:34 Speaker 2 
+
+Ja altså, Det er jo ikke et tekstfil som du kender det fra pc, men Det er men men basically er det det samme.  Det er bare typisk i stedet for at have en UTF-8 eller et ascii format, så er det så typisk et CPI format på mainframe, men Det er bare et tegnsæt. 
+
+00:37:00 Speaker 1 
+
+Hvis vi går videre til måske mere. Noget med hvad du ja synes omkring det her med at skulle prøve at komme væk fra mainframen. Er der så nogle ting som du mener med den nuværende løsning mellem mainframe og batch? I hvert fald batch på mainframe som du godt kunne se? 
+Det som være bedre eller blive forbedret. 
+
+00:37:24 Speaker 2 
+
+Altså jeg tænker jeg tænker. Der er mange batch processer på mainframe man sagtens kunne flytte til en anden platform. Paradoksalt nok er jeg Sådan set mere bekymret for en række af realtids. Er en række af realtids loadsne i forhold til det. 
+
+Men det kunne. 
+
+00:37:44 Speaker 1 
+
+Man sige så i den forstand mere Sådan du er nervøs for i hvordan CICS’en vil virke væk fra eller? 
+
+00:37:51 Speaker 2
+
+I hvert fald, og Det er jo i virkeligheden ikke. Det er jo ikke kun en platform ting, men også fordi at når vi tænker alternativer, så tænker vi meget en microservice arkitektur. Sådan helt simpelt. Nu laver jeg en fonds handel ude i den virkelige verden. Der er jo både noget med, at jeg skal have kommunikeret med VP. Jeg skal have bogført. Jeg skal have opdateret min egen beholdning på kunden, og jeg skal nok også have det logget og så videre og så videre. Rigtig mange af de der ting som. I hvert fald, Sådan som vi ser verden lige nu. Nok bor i 1, 6, 7, 8 microservices. Og der får jeg det her problem, at når microservice nummer 7 fejler, kan jeg så leve med eventual consistency. 
+
+Som vi heller ikke er helt skarpe på endnu, og i en række tilfælde vil man ikke kunne det i finansiel IT. Vi kommer ikke til at have givet kunden værdipapirer uden at få ham afregnet, fordi så kan han dobbelt disponere i en periode, så så er det ude i en masse mønstre om, hvordan håndterer du så det her? Og du burde kunne lave kompenserende transaktioner, og Vi har slet ikke forholdt os til det. Altså Vi har ikke engang mønstret til det, så Der er altså for mig at se rigtig langt før at, man har et fundament, hvor man for alvor kan begynde at angribe det. 
+
+Så jeg tænker. Altså alt muligt forespørgsels load. Vi kan fjerne super fint. Det er det mere end rigeligt moden til, men Der er nogle af de, hvad skal man sige? De kritiske opdaterende funktioner, hvor jeg. I min optik er har vi i hvert fald ikke modenhed. På på de løsninger, som gør, at Vi er klar til at flytte derud fra mainframen. Men batch mæssigt kunne man sagtens. Altså specielt på. 
+Øh specielt på nogle af de der snapshot ting. Det kunne dybest set stå hvor som helst og sørge for at få trukket snapshot ud. En af udfordringer, Der er orkestrerings muligheden i forhold til resten af verden, fordi Det er ikke klokken et eller andet. Det er når det her er sket, og det her er sket, og det her er sket. Og der får vi en lang overgangsperiode. Det her orkestrerings behov på tværs af platforme, som vi også lige skal. Have fundet den gode løsning til. 
+
+00:40:20 Speaker 1 
+
+Ja. Igen, hvis vi snakker om de her performance kriterier vi snakkede om før, er der nogle Af dem du. Og som med din arkitekt baggrund, måske ønsker at man også kunne, eller man i hvert fald. Hvad hedder det fokuserede mere på også, eller ligesom tog mere i mente, når man også designede og lavede sine programmer sin til både batch, eller måske endda også sin realtids? 
+
+00:40:55 Speaker 2 
+
+Altså jeg tænker jo, Det er jo altid sundt at forholde sig til hvad Det er for et system man laver, kan man sige og, og derfor synes jeg jo ikke, at Der er én løsning, der passer til alt. Det er jo vigtigt om du laver. Kritiske systemer med høje transaktions mængder, og Lav fejltolerance eller om eller om du laver noget, som har. Langt lavere frekvens og måske også en anden tolerance for varians i svartid og. Så jeg tænker egentlig vælge de vælg dit design og din og dit værktøj efter hvad Det er for en opgave du skal løse. Det er jo Sådan set. Hvad skal man sige sund fornuft dybest set, men men ikke altid det der sker fordi som alle andre steder, så så ligner altid alting et søm for den der kun Har en Hammer, altså så bliver det meget nemt at at at at man bruger det man. Plejer uanset om det måske ikke er det. Gode valg til opgaven. 
+
+Men ellers vil jeg sige, hvis man skulle tale alternativer til noget batch, så behøves, så kunne et alternativ til noget batch jo være ikke at have Det ja. Altså som Det kan jo være at din datamodel er anderledes, så for eksempel et snapshot er ikke noget du behøves at. Have fastfrosset, for du kan egentlig altid bare beslutte, at din datamodel afspejler. Hvad var status? 
+
+Ved at have tidsdimensioner i alle data eller et eller andet. Ja Der er en pænt lang rejse dertil, men så Det er jo ikke noget man gør over night, men man kan jo begynde at tænke det ind, hvis hvis Det er den måde vi ser fremtiden på. 
+
+00:42:36 Speaker 1 
+
+Okay. Hvis vi skulle prøve at hoppe over i det her, vi også har lidt kommet ind på. Men det her med. COBOL i sig selv, som ofte i hvert fald det der bliver nævnt også nu her i flæng med det her med ud og mainframe i 2040. Så virkede det ikke på dig som om at du er måske særlig interesseret i, at man. Nødvendigvis skal ud og COBOL. 
+
+00:43:02 Speaker 2 
+
+Altså Jeg har det lidt. Jeg er jo uddannet i 1990 tror jeg. Dengang talte vi om, at der blev jo ikke uddannet i cobol programmør dengang. Og Det er jo et stort problem, fordi om 14 dage så er der ikke nogen der kan kode COBOL, 33 år senere. Så så er der jo Sådan set masser af folk der kan COBOL og jeg tænker. Jeg er Sådan set enig i Det er at Der er en rekrutteringsudfordring. Jeg tænker Sådan set Vi er med til selv at skabe det på måden vi italesætter det fordi fordi at det ligesom bliver gjort til noget. Oldnordisk i virkeligheden. Jeg tænker, hvis man kigger på en moderne. Et et moderne IDE til at lave COBOL. Måske og jeg medgiver at at at mainframens rå brugergrænseflade. Den vil virke rimelig fremmed for for de fleste at komme ud af skoledag. Det kan jeg sige. Det gjorde den også i 90’ det. Det mindede ikke ret meget om det jeg havde set da jeg kom. 
+
+Men jeg tænker jo egentlig, Det er meget mere interessant end om Det er cobol eller java eller .NET eller whatever. Jeg tror meget mere på, altså i virkeligheden tror jeg på, at det der. Efter de første. 3 år, hvor man mest hvor man mest er IT fordi man synes Det er sjovt at kode så er min oplevelse i virkeligheden at for de fleste ændrer det sig til at de er i det for den forskel man gør med det man laver og det bliver mindre vigtigt. 
+
+Lige lige hvad er værktøjet eller, Eller programmeringssprog eller og. 90% af kompetencerne på tværs af programmeringssproget er jo det samme. Og selvfølgelig har vi en udfordring, man kan sige, Vi har jo, hvis man vil noget andet, så har vi jo en ret alvorlig portefølje af COBOL programmer. Ja, og det, og det kommer vi jo. Til at forholde. Os til så så jeg tænker vi kommer. Vi kommer jo til at forholde os til, om vi vil fortsætte med at italesætte Det som et problem. 
+
+Fordi hvis ikke nogen af de der unge mennesker, vi rekrutterer nu kommer til. At kode COBOL. 
+
+Ja, så får vi en alvorlig udfordring, fordi min lommeregner kan ikke få de der strategiske perspektiver. Der hedder at vi ude af mainframe 2040 til at. Altså min lommeregner kan ikke regne Den hjemme 
+
+Jeg kan sige, jeg var med i et strategisk projekt omkring lige op til årtusindskiftet. Som ved BAS projektet, hvor man lavede et bogføring, nyt rente, et nyt gebyr og alt muligt andet. Det kostede jo i. Slut halvfemser penge 225 millioner kroner dengang. Og og min påstand vil være, at det bliver, selv hvis man indeks regulerer den pris, så bliver det ikke billigere at prøve at lave det i en på en anden platform nu. Og så kan du bare tage, hvis du tager det beløb og bare fordeler fra nu til 40. Og så går ud og spørger, bankerne er villige til for den del, og Det er stadigvæk kun. Måske 1/4 af hvad der kører på teknikvej. Siger, er I villige til at smide 30 millioner om året Få på at få det omlagt. Ikke fordi du får nødvendigvis får noget nyt, men bare for at få det omlagt. 
+
+Det tror jeg bliver. Det tror jeg bliver op ad bakke, og så findes der jo mange derude i forbindelse med det her move to cloud var der jo også alle mulige. Vi rakte ud til forskellige for at få perspektiver på det. Der findes jo nogen derude, der kan. Lave JOBOL altså tag COBOL og lave det til Java code. 
+
+Noget, der kan fortolkes som java, men Det er jo ikke java kode, for Det er dybest set bare. Så en Java programmør ville finde det vanskeligt faktisk. Men Det er ikke COBOL. 
+
+Men så kan man sige. Flyttede vi så noget eller eller gjorde du det bare værre? Hvis du alligevel næsten skal have et COBOL mindset for at kunne læse det java program det. 
+
+00:47:20 Speaker 1 
+
+Ja, men det ville være nogle af dem. Noget lignende. Det er i hvert fald, der skulle til, for hvis man siger i hvert fald, at Det er et. Hele det her med at skulle væk fra mainframe i 2040, måske ikke nødvendigvis er væk fra COBOL, men det vil være væk fra mainframen, fordi den ligesom at man er bange for den, at man ikke går ned med skibet sammen med dem. 
+
+00:47:38 Speaker 2 
+
+Jo Jeg tror. Ja 
+
+00:47:43 Speaker 1 
+
+så er det måske også. På på en måde nemmere at sælge. For bankerne jo at sige. 30 millioner om året for at få mig til at omskrive det her eller 40 millioner om året, for at vi ikke gør det, og Vi er nødt til at betale IBM for at Beholde os på Mainframe på en måde jeg kunne. Det kunne måske også være en Del af samtalen tænker jeg, Det er. 
+
+00:48:02 Speaker 2 
+
+Jamen det er jo Sådan et billede.Der ikke rigtig. Er der Det er jo Det er jo det Der er problemet er den dag den er der så har så har vi jo en latenstid før Vi er ude. Der hedder virkelig mange år og problem. 
+I praksis udfordringen med det der, Det er, at alle kan blive enige om det på Sådan. Hvad skal man sige på det abstrakte plan? Men når de skal træffe beslutningen om næste års budget? 
+
+Så faktisk at få lagt de. Og Det er 30 millioner for, at vi når det, så har vi jo også nogen, der sidder i Silkeborg. Nogen der sidder i på bygaden. De skulle jo også gerne nå det, så det beløb er væsentligt større, så det der med lige at få dem. Til at træffe beslutningen til næste år. 
+
+Det er rigtig svært, fordi der vil hellere have noget Der er så meget IT, hvor de kan få pengene meget hurtigt tilbage, så det der med at lave en strategisk investering der rækker så langt ud i fremtiden der siger erfaringen bare at. At Det er rigtig svært. 
+
+00:48:58 Speaker 1 
+
+Tiden er ved at løbe fra os her til sidst. Der har jeg måske bare et spørgsmål. Altså hvor du kan ja snakke så meget om det du har lyst til. Det kunne også bare være måske lige Sådan stikord. 
+
+Og det ville bare være igen, hvis du på nuværende tidspunkt i form af hvad Vi har snakket om nu skulle se mig prøve at komme med en ide og undersøge det med den her løsning, som kunne være et alternativ til mainframe og COBOL i hvert fald i den her batch. 
+
+Så som Vi har snakket om nu som nødvendigvis måske også er nødt til at kigge ind på den her realtid processering. Er der noget du Sådan tænker nu, at jeg mangler som viden, eller som du i hvert fald ved som kunne være ret vigtigt at. Også at kigge på. 
+
+00:49:46 Speaker 2 
+
+Altså Jeg tror den. Det kommer an på om om dit fokus vil være at komme ud og mainframe, eller din fokus vil være at overflytte noget batchproces for mainframe. Fordi hvis fokus er at komme ud af mainframe. Så tror jeg. Så så batch bare en lille del af det, så tror jeg du er inde og kigge på den så tror jeg at du skal ind og dyrke. Nogle af de der hårde discipliner, som vi talte om med at få. Alt et alternativ til transaktionelle scope. Hvornår kan man leve med eventual consistency for eksempel som et design mønster? Og hvornår kan man ikke leve med det? Og hvad gør vi i de tilfælde? 
+
+For at opstille et reelt alternativ for det, fordi den smerte er der. Vi kan godt udskyde dem, vi kan lave rigtig meget. Det er jo også det, vi primært er startet på. Det er jo noget data udstilling kan man sige, og Det er super fint og personligt synes jeg, Vi skal gøre meget mere af det, for det giver super god mening. 
+
+Men hvis man vil ud, altså når det når det skal være sort hvidt og man vil ud. Så er der det der smerte, der skal tages på et tidspunkt og sige jamen de der også helt rå opdaterende ting som er hyper kritiske og hvor eventual consistency ikke er godt nok. Hvad gør vi med dem? 
+
+Og Der er rigtig meget hvor vi kan, hvor vi kan leve med forskellige datastreaming løsninger eller andet med asynkront afkobling og Sådan noget. Men der. Er også nogle steder hvor. 
+
+Jeg ikke kan se med nuværende lovgivning og og nuværende måde. Vores kunder ser bankforretning på at der kan har det ingen gang på jord for mig at se, og Det Alternativ mangler man hvis man skal hvis man. Skal tegne vej. 
+
+Og Det kan også, og det andet alternativ kunne være at sige, og Det er i virkeligheden det, Jeg tror på start nu med at offload alt det. Som en ny platform er bedre til eller mindst lige så god til og så lad os vente og se om ikke der kommer en modenhed på noget af det andet. Lad os begynde at gøre os selv altså at søge den modenhed selv også. Og derfor tror jeg, Det er svært at tegne. Altså Det er svært at tegne en plan. Jeg tror man skal tegne retning og ligesom sige så angribe det på den her måde. Ikke altså. 
+
+00:51:56 Speaker 1 
+ 
+Ja, det ville være ligesom at det nu siger offload noget batchen måske. Vil de ja Der er noget andet. 
+
+00:52:02 Speaker 2 
+
+Det kunne også være batchen. Det kunne også være rigtig meget. Alt alt forespørgerne, eksterne api, kald og alt muligt andet altså. Det står det står glimrende og snurre. Okay. 
+
+
+
