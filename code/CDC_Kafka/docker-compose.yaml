@@ -1,0 +1,68 @@
+version: '3.1'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.2.1
+    ports:
+      - "2181:2181"
+    restart: unless-stopped
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:7.2.1
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9094
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  kowl:
+    image: quay.io/cloudhut/kowl:latest
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+      - kafka
+    environment:
+      KAFKA_BROKERS: kafka:9092
+
+  cdc:
+    image: debezium/connect:latest
+    ports:
+      - "8083:8083"
+      - "5006:5005"
+    links:
+      - zookeeper
+      - kafka
+      - db2
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: _debezium-configs
+      OFFSET_STORAGE_TOPIC: _debezium-offsets
+      STATUS_STORAGE_TOPIC: _debezium-status
+
+  db2:
+    image: ibmcom/db2:11.5.0.0a
+    ports:
+      - "50000:50000"
+      - "55000:55000"
+    privileged: true
+    volumes:
+      - db2-data:/database
+    environment:
+      LICENSE: accept
+      DBNAME: testdb
+      DB2INSTANCE: db2inst1
+      TO_CREATE_SAMPLEDB: true
+      DB2INST1_PASSWORD: db2inst1
+      HADR_ENABLED: false
