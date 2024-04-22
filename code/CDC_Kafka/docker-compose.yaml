@@ -1,18 +1,29 @@
 version: '3.1'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.2.1
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper
+    container_name: zookeeper
     ports:
       - "2181:2181"
     restart: unless-stopped
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    healthcheck:
+      test: echo srvr | nc zookeeper 2181 || exit 1
+      interval: 10s
+      retries: 5
+      start_period: 10s
 
   kafka:
-    image: confluentinc/cp-kafka:7.2.1
+    image: confluentinc/cp-kafka:7.4.0
+    hostname: kafka
+    container_name: kafka
     ports:
+      - '29092:29092'
       - "9092:9092"
-      - "9094:9094"
+      - "9101:9101"
     restart: unless-stopped
     depends_on:
       - zookeeper
@@ -20,49 +31,119 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+    healthcheck:
+      test: nc -z localhost 9092 || exit -1
+      start_period: 15s
+      interval: 5s
+      timeout: 10s
+      retries: 10
 
-  kowl:
-    image: quay.io/cloudhut/kowl:latest
-    ports:
-      - "8080:8080"
-    restart: unless-stopped
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:7.4.0
+    hostname: control-center
+    container_name: control-center
     depends_on:
-      - zookeeper
-      - kafka
-    environment:
-      KAFKA_BROKERS: kafka:9092
-
-  cdc:
-    image: debezium/connect:latest
+      kafka:
+        condition: service_healthy
     ports:
-      - "8083:8083"
-      - "5006:5005"
-    links:
-      - zookeeper
-      - kafka
-      - db2
+      - "9021:9021"
     environment:
-      BOOTSTRAP_SERVERS: kafka:9092
-      GROUP_ID: 1
-      CONFIG_STORAGE_TOPIC: _debezium-configs
-      OFFSET_STORAGE_TOPIC: _debezium-offsets
-      STATUS_STORAGE_TOPIC: _debezium-status
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka:29092'
+      CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'http://debezium:8083'
+      CONTROL_CENTER_CONNECT_HEALTHCHECK_ENDPOINT: '/connectors'
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
+      CONFLIENT_METRICS_ENABLE: 'false'
+      PORT: 9021
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9021/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
+  debezium:
+    image: debezium/connect:latest
+    container_name: debezium
+    hostname: debezium
+    depends_on:
+      #Skal være DB2 dependency
+      #postgres:
+      #  condition: service_healthy
+      kafka:
+        condition: service_healthy
+    ports:
+      - '8093:8083'
+    environment:
+      BOOTSTRAP_SERVERS: kafka:29092
+      CONNECT_REST_ADVERTISED_HOST_NAME: debezium
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: connect_configs
+      CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      STATUS_STORAGE_TOPIC: connect_statuses
+      STATUS_STORAGE_REPLICATION_FACTOR: 1
+      OFFSET_STORAGE_TOPIC: connect_offsets
+      OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      ENABLE_DEBEZIUM_SCRIPTING: 'true'
+      KAFKA_CONNECT_PLUGINS_DIR: "/kafka/connect"
+      CONFIG_STORAGE_FILE: "/config/db2-connector.json"
+    volumes:
+      - ./cdc/db2-connector.json:/config/db2-connector.json
+      - ./kafka/connect:/kafka/connect/libs
+    healthcheck:  
+      test:
+        [ 'CMD', 'curl', '--silent', '--fail', '-X', 'GET', 'http://localhost:8083/connectors', ]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  debezium-ui:
+    image: debezium/debezium-ui:latest
+    container_name: debezium-ui
+    hostname: debezium-ui
+    depends_on:
+      debezium:
+        condition: service_healthy
+    ports:
+      - '8080:8080'
+    environment:
+      KAFKA_CONNECT_URIS: http://debezium:8083
+
+# https://github.com/dicksontung/docker-db2/blob/master/docker-compose.yml
+# https://hevodata.com/learn/db2-change-data-capture/#How-to-Implement-DB2-Change-Data-Capture-with-Kafka
   db2:
     image: ibmcom/db2:11.5.0.0a
+    container_name: db2
+    hostname: db2
     ports:
       - "50000:50000"
       - "55000:55000"
     privileged: true
     volumes:
-      - db2-data:/database
+      - ./db2-data:/database
     environment:
       LICENSE: accept
-      DBNAME: testdb
+      DBNAME: TESTDB
       DB2INSTANCE: db2inst1
       TO_CREATE_SAMPLEDB: true
       DB2INST1_PASSWORD: db2inst1
       HADR_ENABLED: false
+      IS_OSXFS: true
+
+networks:
+  default:
+    name: test_network
+    attachable: true
