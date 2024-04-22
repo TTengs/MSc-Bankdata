@@ -134,14 +134,12 @@ services:
     privileged: true
     volumes:
       - ./db2-data:/database
+      - ./db2_config:/home/db2inst1/config
     environment:
       LICENSE: accept
-      DBNAME: TESTDB
       DB2INSTANCE: db2inst1
-      TO_CREATE_SAMPLEDB: true
-      DB2INST1_PASSWORD: db2inst1
-      HADR_ENABLED: false
-      IS_OSXFS: true
+      DB2INST1_PASSWORD: password
+    command: db2sampl
 
 networks:
   default:
