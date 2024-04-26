@@ -1,3 +1,21 @@
+x-spark-common: &spark-common
+  image: bitnami/spark:latest
+  volumes:
+    - ./jobs:/opt/bitnami/spark/jobs
+
+  x-airflow-common: &airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - airflow.env
+    volumes:
+      - ./jobs:/opt/airflow/jobs
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    depends_on:
+      - airflow-postgres
+
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
@@ -57,8 +75,9 @@ services:
       - "9021:9021"
     environment:
       CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka:29092'
-      CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'http://debezium:8083'
+      CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'http://kafka-connect:8083'
       CONTROL_CENTER_CONNECT_HEALTHCHECK_ENDPOINT: '/connectors'
+      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
@@ -71,80 +90,115 @@ services:
       timeout: 10s
       retries: 5
 
-  debezium:
-    image: debezium/connect:2.5.3.Final
-    container_name: debezium
-    hostname: debezium
-    build:
-      context: ./cdc
-    depends_on:
-      #Skal være DB2 dependency
-      #postgres:
-      #  condition: service_healthy
-      kafka:
-        condition: service_healthy
-    ports:
-      - "8093:8083"
-      - "5006:5005"
-    links:
-      - kafka
-      - db2
-    environment:
-      BOOTSTRAP_SERVERS: kafka:29092
-      CONNECT_REST_ADVERTISED_HOST_NAME: debezium
-      GROUP_ID: 1
-      CONFIG_STORAGE_TOPIC: connect_configs
-      CONFIG_STORAGE_REPLICATION_FACTOR: 1
-      STATUS_STORAGE_TOPIC: connect_statuses
-      STATUS_STORAGE_REPLICATION_FACTOR: 1
-      OFFSET_STORAGE_TOPIC: connect_offsets
-      OFFSET_STORAGE_REPLICATION_FACTOR: 1
-      KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
-      VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
-      ENABLE_DEBEZIUM_SCRIPTING: 'true'
-      CONFIG_STORAGE_FILE: "/config/postgres_connector.json.json"
-    volumes:
-      - ./cdc/postgres_connector.json:/config/postgres_connector.json
-    healthcheck:  
-      test:
-        [ 'CMD', 'curl', '--silent', '--fail', '-X', 'GET', 'http://localhost:8083/connectors', ]
-      start_period: 10s
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  # debezium-ui:
-  #   image: debezium/debezium-ui:latest
-  #   container_name: debezium-ui
-  #   hostname: debezium-ui
+  # debezium:
+  #   image: debezium/connect:2.5.3.Final
+  #   container_name: debezium
+  #   hostname: debezium
+  #   build:
+  #     context: ./cdc
   #   depends_on:
-  #     debezium:
+  #     #Skal være DB2 dependency
+  #     #postgres:
+  #     #  condition: service_healthy
+  #     kafka:
   #       condition: service_healthy
   #   ports:
-  #     - '8080:8080'
+  #     - "8093:8083"
+  #     - "5006:5005"
+  #   links:
+  #     - kafka
   #   environment:
-  #     KAFKA_CONNECT_URIS: http://debezium:8083
-
-# https://github.com/dicksontung/docker-db2/blob/master/docker-compose.yml
-# https://hevodata.com/learn/db2-change-data-capture/#How-to-Implement-DB2-Change-Data-Capture-with-Kafka
-  # db2:
-  #   image: ibmcom/db2:11.5.0.0a
-  #   container_name: db2
-  #   hostname: db2
-  #   ports:
-  #     - "50000:50000"
-  #     - "55000:55000"
-  #   privileged: true
+  #     BOOTSTRAP_SERVERS: kafka:29092
+  #     CONNECT_REST_ADVERTISED_HOST_NAME: debezium
+  #     GROUP_ID: 1
+  #     CONFIG_STORAGE_TOPIC: connect_configs
+  #     CONFIG_STORAGE_REPLICATION_FACTOR: 1
+  #     STATUS_STORAGE_TOPIC: connect_statuses
+  #     STATUS_STORAGE_REPLICATION_FACTOR: 1
+  #     OFFSET_STORAGE_TOPIC: connect_offsets
+  #     OFFSET_STORAGE_REPLICATION_FACTOR: 1
+  #     KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+  #     VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+  #     ENABLE_DEBEZIUM_SCRIPTING: 'true'
+  #     CONFIG_STORAGE_FILE: "/config/postgres_connector.json"
+  #     CONNECT_PLUGIN_PATH: "/kafka/connect"
   #   volumes:
-  #     - ./db2-data:/database
-  #   environment:
-  #     LICENSE: accept
-  #     DBNAME: TESTDB
-  #     DB2INSTANCE: db2inst1
-  #     TO_CREATE_SAMPLEDB: true
-  #     DB2INST1_PASSWORD: db2inst1
-  #     HADR_ENABLED: false
-  #     IS_OSXFS: true
+  #     - ./cdc/postgres_connector.json:/config/postgres_connector.json
+  #     - ./confluentinc-kafka-connect-ibmmq:/kafka/connect/
+  #   healthcheck:  
+  #     test:
+  #       [ 'CMD', 'curl', '--silent', '--fail', '-X', 'GET', 'http://localhost:8083/connectors', ]
+  #     start_period: 10s
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:latest
+    hostname: schema-registry
+    container_name: schema-registry
+    restart: always
+    depends_on:
+      - kafka
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: kafka:29092
+      SCHEMA_REGISTRY_SCHEMA_PROVIDERS_AVRO_VALIDATE_DEFAULTS: "true"
+
+  kafka-connect:
+    image: confluentinc/cp-kafka-connect:latest
+    container_name: connect
+    hostname: connect
+    restart: always
+    depends_on:
+      - kafka
+      - postgres
+      - ibmmq
+    links:
+      - kafka
+    ports:
+      - "5005:5005"
+      - "8083:8083"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: kafka:29092
+      CONNECT_REST_ADVERTISED_HOST_NAME: connect
+      CONNECT_GROUP_ID: "connect-cluster"
+      CONNECT_PRODUCER_CLIENT_ID: "connect-worker-producer"
+      CONNECT_CLIENT_ID: "connect-adminclient-producer"
+      CONNECT_CONFIG_STORAGE_TOPIC: connect-configs
+      CONNECT_OFFSET_STORAGE_TOPIC: connect-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: connect-status
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.storage.StringConverter"
+      CONNECT_VALUE_CONVERTER: "io.confluent.connect.avro.AvroConverter"
+      CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_TOPIC_CREATION_ENABLE: 'true'
+      CONNECT_CONNECTOR_CLIENT_CONFIG_OVERRIDE_POLICY: All
+      CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components/
+    volumes:
+      - ./custom_connectors/:/usr/share/confluent-hub-components/
+      #- ./confluentinc-kafka-connect-jdbc:/usr/share/confluent-hub-components/
+      #- ./wmq/JavaSE/lib/jms.jar:/usr/share/confluent-hub-components/confluentinc-kafka-connect-ibmmq/lib/jms.jar
+
+  ibmdb2:
+    image: ibmcom/db2:11.5.6.0
+    hostname: ibmdb2
+    container_name: ibmdb2
+    privileged: true
+    environment:
+      LICENSE: accept
+      DB2INST1_PASSWORD: passw0rd
+      DBNAME: testdb
+      ARCHIVE_LOGS: "false"
+      SAMPLEDB: "true"
 
   postgres:
     image: postgres:latest
@@ -164,6 +218,66 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  
+  airflow-postgres:
+    image: postgres:14.0
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+
+  ibmmq:
+    image: ibmcom/mq:latest
+    ports:
+      - "1414:1414"
+      - "9443:9443"
+     # For monitoring prometheus metrics
+     # - "9157:9157"
+    environment:
+      LICENSE: accept
+      MQ_QMGR_NAME: QM1
+      MQ_ENABLE_METRICS: 'true'
+      MQ_ENABLE_EMBEDDED_WEB_SERVER: 'true'
+      MQ_ADMIN_PASSWORD: passw0rd
+      MQ_APP_PASSWORD: passw0rd
+      MQ_APP_USER: app
+      MQ_ADMIN_USER: admin
+    volumes:
+      - ./ibmmq-data/config.mqsc:/etc/mqm/config.mqsc
+
+  spark-master:
+    <<: *spark-common
+    command: bin/spark-class org.apache.spark.deploy.master.Master
+    ports:
+      - "9090:8080"
+      - "7077:7077"
+
+  spark-worker:
+    <<: *spark-common
+    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    depends_on:
+      - spark-master
+    environment:
+      SPARK_MODE: worker
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 1g
+      SPARK_MASTER_URL: spark://spark-master:7077
+  
+  webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    depends_on:
+      - scheduler
+      - airflow-postgres
+
+  scheduler:
+    <<: *airflow-common
+    command: bash -c "airflow db migrate && airflow users create --username admin --firstname theis --lastname tengs --role Admin --email test@gmail.com --password admin && airflow scheduler"
+
+# For future work
+# https://github.com/vdesabou/kafka-docker-playground/tree/master/environment/plaintext/grafana
 
 networks:
   default:

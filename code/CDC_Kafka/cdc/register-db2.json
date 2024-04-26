@@ -1,22 +1,14 @@
 {
     "name": "db2-connector",
     "config": {
-        "connector.class" : "io.debezium.connector.db2.Db2Connector",
-        "tasks.max" : "1",
-        "database.server.name" : "db2",
-        "database.hostname" : "db2",
-        "database.port" : "50000",
-        "database.user" : "db2inst1",
-        "database.password" : "password",
-        "database.dbname" : "TESTDB",
-        "database.cdcschema": "ASNCDC",
-        "database.history.internal.kafka.bootstrap.servers" : "kafka:29092",
-        "database.history.internal.kafka.topic": "bd_history_test_topic",
-        "topic.creation.default.replication.factor": 1,  
-        "topic.creation.default.partitions": 1,
-        "topic.prefix": "db2_",
-        "table.include.list" : "DB2INST1.ORDEREVENTS",
-        "topic.creation.default.cleanup.policy": "compact", 
-        "tombstones.on.delete" : "false"
+        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+        "tasks.max": "1",
+        "connection.url":"jdbc:db2://ibmdb2:25010/sample",
+        "connection.user":"db2inst1",
+        "connection.password":"passw0rd",
+        "mode": "bulk",
+        "topic.prefix": "db2-",
+        "errors.log.enable": "true",
+        "errors.log.include.messages": "true"
     }
 }
