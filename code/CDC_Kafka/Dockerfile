@@ -1,4 +1,4 @@
-FROM apache/airflow:2.7.1-python3.11
+FROM apache/airflow:2.7.3-python3.11
 
 USER root
 RUN apt-get update && \
@@ -14,4 +14,4 @@ RUN export JAVA_HOME
 
 USER airflow
 
-RUN pip install apache-airflow apache-airflow-providers-apache-spark pyspark
+RUN pip install apache-airflow apache-airflow-providers-apache-spark pyspark confluent-kafka airflow-provider-kafka apache-airflow-providers-apache-kafka

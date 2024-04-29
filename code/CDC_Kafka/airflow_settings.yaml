@@ -1,0 +1,34 @@
+airflow:
+  connections:
+    - conn_id: spark-conn
+      conn_type: Spark
+      host: spark://spark-master
+      port: 7077
+    - conn_id: kafka_default
+      conn_type: general
+      conn_extra:
+        bootstrap.servers: kafka:29092
+        group.id: group_1
+        security.protocol: PLAINTEXT
+        enable.auto.commit: False
+        auto.offset.reset: "beginning"
+    - conn_id: kafka_listener
+      conn_type: general
+      conn_extra:
+        bootstrap.servers: kafka:29092
+        group.id: group_2
+        security.protocol: PLAINTEXT
+        enable.auto.commit: False
+        auto.offset.reset: "beginning"
+{
+  "bootstrap.servers": "kafka:29092",
+  "group.id": "group_1",
+  "security.protocol": "PLAINTEXT",
+  "auto.offset.reset": "beginning"
+}
+{
+  "bootstrap.servers": "kafka:29092",
+  "group.id": "group_2",
+  "security.protocol": "PLAINTEXT",
+  "auto.offset.reset": "beginning"
+}

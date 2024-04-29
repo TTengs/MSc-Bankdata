@@ -47,13 +47,13 @@ if [[ $1 = "db2start" ]]; then
   su - db2inst1 -c "db2start"
   nohup /usr/sbin/sshd -D 2>&1 > /dev/null &
   while true; do sleep 1000; done
-elif [[ $1 = "db2sampl" ]]; then
+elif [[ $1 = "db2init" ]]; then
   echo "Starting DB instance..."
   su - db2inst1 -c "db2start"
   echo "Creating sample DB..."
-  su - db2inst1 -c "db2 create db sample"
+  su - db2inst1 -c "db2 create db testdb"
   echo "Connecting to DB & Creating table..."
-  su - db2inst1 -c "db2 connect to sample && db2 -tvf /home/db2inst1/config/db2.sql"
+  su - db2inst1 -c "db2 connect to testdb && db2 -tvf /home/db2inst1/config/db2.sql"
   echo "Initialize complete"
   nohup /usr/sbin/sshd -D 2>&1 > /dev/null &
   while true; do sleep 1000; done

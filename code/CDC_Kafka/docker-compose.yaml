@@ -7,8 +7,15 @@ x-spark-common: &spark-common
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - airflow.env
+    #env_file:
+    #  - airflow.env
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__FERNET_KEY: 81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
+      AIRFLOW__WEBSERVER__SECRET_KEY: 46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
     volumes:
       - ./jobs:/opt/airflow/jobs
       - ./dags:/opt/airflow/dags
@@ -155,8 +162,8 @@ services:
     restart: always
     depends_on:
       - kafka
-      - postgres
       - ibmmq
+      - ibmdb2
     links:
       - kafka
     ports:
@@ -193,38 +200,31 @@ services:
     hostname: ibmdb2
     container_name: ibmdb2
     privileged: true
+    ports:
+      - "50000:50000"
     environment:
       LICENSE: accept
       DB2INST1_PASSWORD: passw0rd
       DBNAME: testdb
+      DB2INSTANCE: db2inst1
       ARCHIVE_LOGS: "false"
-      SAMPLEDB: "true"
-
-  postgres:
-    image: postgres:latest
-    container_name: postgres
-    hostname: postgres
-    ports:
-      - '5432:5432'
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: test
-    command: [ 'postgres', '-c', 'wal_level=logical', '-c', 'listen_addresses=*' ]
+      SAMPLEDB: "false"
     volumes:
-      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
-    healthcheck:
-      test: [ 'CMD', 'psql', '-U', 'postgres', '-c', 'SELECT 1' ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      - ./db2_config:/home/db2inst1/config
+    entrypoint: /home/db2inst1/config/entrypoint.sh
+    command: db2init
   
   airflow-postgres:
     image: postgres:14.0
     environment:
-      - POSTGRES_USER=airflow
-      - POSTGRES_PASSWORD=airflow
-      - POSTGRES_DB=airflow
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
 
   ibmmq:
     image: ibmcom/mq:latest
@@ -275,6 +275,19 @@ services:
   scheduler:
     <<: *airflow-common
     command: bash -c "airflow db migrate && airflow users create --username admin --firstname theis --lastname tengs --role Admin --email test@gmail.com --password admin && airflow scheduler"
+
+  triggerer:
+    <<: *airflow-common
+    command: triggerer
+    depends_on:
+      - scheduler
+      - airflow-postgres
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type TriggererJob --hostname "$${HOSTNAME}"']
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
 
 # For future work
 # https://github.com/vdesabou/kafka-docker-playground/tree/master/environment/plaintext/grafana
