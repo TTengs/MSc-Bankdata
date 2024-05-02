@@ -26,6 +26,7 @@ if [ -z "$DB2INST1_PASSWORD" ]; then
   echo >&2 'Did you forget to add -e DB2INST1_PASSWORD=... ?'
   exit 1
 else
+  echo "Setting password for db2inst1..."
   echo -e "$DB2INST1_PASSWORD\n$DB2INST1_PASSWORD" | passwd db2inst1
 fi
 
@@ -50,7 +51,7 @@ if [[ $1 = "db2start" ]]; then
 elif [[ $1 = "db2init" ]]; then
   echo "Starting DB instance..."
   su - db2inst1 -c "db2start"
-  echo "Creating sample DB..."
+  echo "Creating test DB..."
   su - db2inst1 -c "db2 create db testdb"
   echo "Connecting to DB & Creating table..."
   su - db2inst1 -c "db2 connect to testdb && db2 -tvf /home/db2inst1/config/db2.sql"

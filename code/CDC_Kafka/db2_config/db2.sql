@@ -1,6 +1,6 @@
 -- Create a table
 CREATE TABLE employees (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY NOT NULL,
     name VARCHAR(50),
     age INT,
     department VARCHAR(50)
