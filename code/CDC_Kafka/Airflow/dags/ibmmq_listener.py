@@ -16,7 +16,7 @@ from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 import json
 import uuid
 
-KAFKA_TOPIC = "ibmmq_test"
+KAFKA_TOPIC = "SPARK_SUBMIT_TRIGGER"
 
 
 def listen_function(message):
@@ -43,7 +43,7 @@ def event_triggered_function(event, **context):
 
     # use the TriggerDagRunOperator (TDRO) to kick off a downstream DAG
     TriggerDagRunOperator(
-        trigger_dag_id="sparking_flow",
+        trigger_dag_id="sparking_simple_submit",
         task_id=f"triggered_downstream_dag_{uuid.uuid4()}",
         wait_for_completion=False,  # wait for downstream DAG completion
         #conf={"pet_name": pet_name},

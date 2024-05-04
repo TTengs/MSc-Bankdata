@@ -1,0 +1,22 @@
+{
+    "name": "ibm-mq-sink-connector",
+    "config": {
+        "connector.class": "io.confluent.connect.jms.IbmMqSinkConnector",
+        "tasks.max": "1",
+        "topics": "sparking_simple_submit_state",
+        "mq.queue.manager": "QM1",
+        "mq.channel": "DEV.APP.SVRCONN",
+        "mq.hostname": "ibmmq",
+        "mq.port": "1414",
+        "mq.username": "app",
+        "mq.password": "passw0rd",
+        "mq.transport.type": "client",
+        "jms.destination.name": "SPARK_SUBMIT_STATE",
+        "jms.destination.type": "queue",
+        "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "confluent.license": "",
+        "confluent.topic.bootstrap.servers": "kafka:29092",
+        "confluent.topic.replication.factor": "1"
+    }
+}

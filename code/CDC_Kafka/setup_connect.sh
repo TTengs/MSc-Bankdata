@@ -1,19 +1,13 @@
 #!/bin/bash
-COLOR_GREEN='\033[0;32m'
-NO_COLOR='\033[0m'
 
-echo $COLOR_GREEN
+#echo "Create connector for db2"
 
-echo "Create connector for db2"
+#curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/register-db2.json
 
-echo $NO_COLOR
+echo "Create source connector for ibm mq"
 
-curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/register-db2.json
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/ibmmq_source_connector.json
 
-echo $COLOR_GREEN
+echo "Create sink connector for ibm mq"
 
-echo "Create connector for ibm mq"
-
-echo $NO_COLOR
-
-curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/ibmmq_connector.json
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/ibmmq_sink_connector.json

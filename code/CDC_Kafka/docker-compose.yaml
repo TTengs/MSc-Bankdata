@@ -286,6 +286,7 @@ services:
   webserver:
     <<: *airflow-common
     command: webserver
+    restart: always
     ports:
       - "8080:8080"
     depends_on:

@@ -17,7 +17,7 @@ properties = {
 }
 
 # Table name
-table = "EMPLOYEES"
+table = "things"
 
 # Read data from DB2 table into a Spark DataFrame
 df = spark.read.jdbc(url=url, table=table, properties=properties)
