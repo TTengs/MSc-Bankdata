@@ -18,11 +18,13 @@ x-spark-common: &spark-common
       AIRFLOW__CORE__FERNET_KEY: 81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
       AIRFLOW__WEBSERVER__SECRET_KEY: 46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
       AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
+      AIRFLOW_CONN_SPARK-CONN: "spark://spark-master:7077"
     volumes:
       - ./Airflow/jobs:/opt/airflow/jobs
       - ./Airflow/dags:/opt/airflow/dags
       - ./Airflow/airflow_logs:/opt/airflow/logs
       - ./Airflow/spark_jars:/spark_jars
+      - ./Airflow/utils:/opt/airflow/utils
     depends_on:
       - airflow-postgres
 
@@ -220,6 +222,8 @@ services:
   
   airflow-postgres:
     image: postgres:14.0
+    container_name: airflow-postgres
+    hostname: airflow-postgres
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -232,6 +236,8 @@ services:
 
   ibmmq:
     image: ibmcom/mq:latest
+    hostname: ibmmq
+    container_name: ibmmq
     ports:
       - "1414:1414"
       - "9443:9443"
@@ -285,6 +291,8 @@ services:
   
   webserver:
     <<: *airflow-common
+    container_name: webserver
+    hostname: webserver
     command: webserver
     restart: always
     ports:
@@ -295,12 +303,16 @@ services:
 
   scheduler:
     <<: *airflow-common
+    container_name: scheduler
+    hostname: scheduler
     depends_on:
       - airflow-postgres
     command: bash -c "airflow db migrate && airflow users create --username admin --firstname theis --lastname tengs --role Admin --email test@gmail.com --password admin && airflow scheduler"
 
   triggerer:
     <<: *airflow-common
+    container_name: triggerer
+    hostname: triggerer
     command: triggerer
     depends_on:
       - scheduler
