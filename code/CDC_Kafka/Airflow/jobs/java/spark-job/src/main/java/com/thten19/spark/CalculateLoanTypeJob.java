@@ -1,4 +1,4 @@
-package com.airscholar.spark;
+package com.thten19.spark;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
