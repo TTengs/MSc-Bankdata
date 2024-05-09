@@ -41,10 +41,10 @@
         <scope>provided</scope>
     </dependency>
     <!-- JDBC driver for DB2 -->
-        <dependency>
-            <groupId>com.ibm.db2.jcc</groupId>
-            <artifactId>db2jcc</artifactId>
-            <version>11.5.6.0</version>
-        </dependency>
+      <dependency>
+          <groupId>com.ibm.db2</groupId>
+          <artifactId>jcc</artifactId>
+          <version>11.5.6.0</version>
+      </dependency>
   </dependencies>
 </project>

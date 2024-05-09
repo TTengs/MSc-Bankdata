@@ -1,3 +1,5 @@
+package com.airscholar.spark;
+
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
@@ -10,7 +12,7 @@ public class CalculateLoanTypeJob {
                 .getOrCreate();
 
         // JDBC URL
-        String url = "jdbc:db2://ibmdb2:50000/testdb";
+        String url = "jdbc:db2://ibmdb2:25010/testdb";
 
         // JDBC properties
         java.util.Properties properties = new java.util.Properties();
@@ -25,7 +27,7 @@ public class CalculateLoanTypeJob {
         Dataset<Row> df = spark.read().jdbc(url, account_table, properties);
 
         // Calculate loan type score based on available balance
-        Dataset<Row> loanTypeScore = accountData.withColumn("loan_type",
+        Dataset<Row> loanTypeScore = df.withColumn("loan_type",
                 org.apache.spark.sql.functions.when(
                         org.apache.spark.sql.functions.col("balance").between(0, 49999), "C"
                 ).when(

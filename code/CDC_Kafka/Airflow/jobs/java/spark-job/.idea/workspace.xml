@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d65e870b-a6b8-43f0-ad11-e14ac1e659ae" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_05_2024_11_21__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_05_2024_11_21__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springDemo/src/main/java/com/example/springDemo/config/BatchConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springDemo/src/main/java/com/example/springDemo/domain/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springDemo/src/main/java/com/example/springDemo/processor/InterestCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springDemo/src/main/java/com/example/springDemo/reader/CsvAccountReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../springDemo/src/main/java/com/example/springDemo/writer/AccountJdbcItemWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/config/BatchConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/domain/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/processor/InterestCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/reader/CsvAccountReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/writer/AccountJdbcItemWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/resources/config/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/resources/data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/airscholar/spark/CalculateLoanTypeJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/airscholar/spark/CalculateLoanTypeJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../springDemo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/BatchConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/JobCompletionNotificationListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/PersonItemProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/SpringDemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../springDemo/src/main/java/com/example/springDemo/SpringDemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/resources/sample-data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../springDemo/src/main/resources/schema-all.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "TTengs"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TTengs/MSc-Bankdata.git",
+    "accountId": "cdbfdbea-4f12-42e9-bda7-f9ec44402c49"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2gDyJJGADD2Ba5mBg3z069IFqyK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/theis/Documents/Github/MSc-Bankdata/code/CDC_Kafka/Airflow/jobs/java/spark-job",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d65e870b-a6b8-43f0-ad11-e14ac1e659ae" name="Changes" comment="" />
+      <created>1715246369550</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715246369550</updated>
+      <workItem from="1715246370603" duration="1473000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
