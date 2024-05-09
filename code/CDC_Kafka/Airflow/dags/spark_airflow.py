@@ -10,7 +10,7 @@ from datetime import timedelta, datetime
 from utils import on_failure_callback_dag, on_success_callback_dag, on_failure_callback_task, on_success_callback_task, on_execute_callback_task, on_sla_miss_callback_task
 
 dag = DAG(
-    dag_id = "sparking_simple_submit",
+    dag_id = "test_SLA",
     on_failure_callback = on_failure_callback_dag,
     on_success_callback = on_success_callback_dag,
     sla_miss_callback = on_sla_miss_callback_task,
@@ -38,14 +38,6 @@ word_count_job = SparkSubmitOperator(
     dag=dag
 )
 
-# java_job = SparkSubmitOperator(
-#     task_id="java_job",
-#     conn_id="spark-conn",
-#     application="jobs/java/spark-job/target/spark-job-1.0-SNAPSHOT.jar",
-#     java_class="com.airscholar.spark.WordCountJob",
-#     dag=dag
-# )
-
 sleeper = BashOperator(
     task_id="sleeper",
     bash_command = 'sleep 30',
@@ -59,4 +51,4 @@ end = PythonOperator(
     dag=dag
 )
 
-start >> word_count_job >> sleeper >> end
+start >> word_count_job >> end

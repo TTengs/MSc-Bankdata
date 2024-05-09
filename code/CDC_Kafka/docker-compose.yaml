@@ -18,7 +18,6 @@ x-spark-common: &spark-common
       AIRFLOW__CORE__FERNET_KEY: 81HqDtbqAywKSOumSha3BhWNOdQ26slT6K0YaZeZyPs=
       AIRFLOW__WEBSERVER__SECRET_KEY: 46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
       AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
-      AIRFLOW_CONN_SPARK-CONN: "spark://spark-master:7077"
     volumes:
       - ./Airflow/jobs:/opt/airflow/jobs
       - ./Airflow/dags:/opt/airflow/dags
