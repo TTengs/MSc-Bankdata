@@ -1,14 +1,15 @@
 -- Create a table
-CREATE TABLE employees (
-    id INT PRIMARY KEY NOT NULL,
-    name VARCHAR(50),
-    age INT,
-    department VARCHAR(50)
+CREATE TABLE account (
+    account_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    account_number VARCHAR(50) NOT NULL UNIQUE,
+    account_holder_first_name VARCHAR(100) NOT NULL,
+    account_holder_last_name VARCHAR(100) NOT NULL,
+    balance DECIMAL(18, 2) NOT NULL
 );
 
--- Insert dummy values into the table
-INSERT INTO employees (id, name, age, department) VALUES
-(1, 'John Doe', 30, 'IT'),
-(2, 'Jane Smith', 25, 'HR'),
-(3, 'Michael Johnson', 35, 'Finance'),
-(4, 'Emily Brown', 28, 'Marketing');
+CREATE TABLE account_loan_type (
+    loan_type_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    account_id BIGINT NOT NULL,
+    loan_type VARCHAR(10) NOT NULL,
+    FOREIGN KEY (account_id) REFERENCES account(account_id)
+);
