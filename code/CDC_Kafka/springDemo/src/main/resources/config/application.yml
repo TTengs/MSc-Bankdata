@@ -2,8 +2,12 @@ spring:
   application:
     name: springDemo
   datasource:
+    #For local testing
     #url: jdbc:db2://localhost:25010/testdb
     url: jdbc:db2://ibmdb2:25010/testdb
     driverClassName: com.ibm.db2.jcc.DB2Driver
     username: db2inst1
     password: passw0rd
+  batch:
+    jdbc:
+      initialize-schema: always
