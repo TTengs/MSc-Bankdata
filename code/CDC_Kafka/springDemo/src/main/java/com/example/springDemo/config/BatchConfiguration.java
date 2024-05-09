@@ -2,7 +2,7 @@ package com.example.springDemo.config;
 
 import com.example.springDemo.domain.Account;
 import com.example.springDemo.writer.AccountJdbcItemWriter;
-import com.example.springDemo.reader.CsvAccountReader;
+import com.example.springDemo.reader.CsvInterestReader;
 import com.example.springDemo.processor.InterestCalculator;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
 
 @Configuration
 public class BatchConfiguration {
@@ -33,11 +32,12 @@ public class BatchConfiguration {
 
     @Bean
     public Step calculateInterestStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
-                                      ItemReader<Account> accountItemReader, InterestCalculator interestCalculator,
+                                      ItemReader<Account> interestItemReader,
+                                      InterestCalculator interestCalculator,
                                       ItemWriter<Account> accountItemWriter) {
         return new StepBuilder("CalculateInterestStep", jobRepository)
                 .<Account, Account> chunk(10, transactionManager)
-                .reader(accountItemReader)
+                .reader(interestItemReader)
                 .processor(interestCalculator)
                 .writer(accountItemWriter)
                 .allowStartIfComplete(true)
@@ -46,12 +46,12 @@ public class BatchConfiguration {
 
     @Bean
     public ItemReader<Account> itemReader() {
-        return new CsvAccountReader();
+        return new CsvInterestReader();
     }
 
     @Bean
     public InterestCalculator itemProcessor() {
-        return new InterestCalculator(new BigDecimal("0.05"));
+        return new InterestCalculator(dataSource);
     }
 
     @Bean

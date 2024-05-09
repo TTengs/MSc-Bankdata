@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 public class Account {
     private Long id;
     private String accountNumber;
-    private String accountHolderFirstName;
-    private String accountHolderLastName;
     private BigDecimal balance;
+    private BigDecimal interest;
 }

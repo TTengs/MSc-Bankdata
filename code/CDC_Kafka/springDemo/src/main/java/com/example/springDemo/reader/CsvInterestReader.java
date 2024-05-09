@@ -9,15 +9,15 @@ import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.core.io.ClassPathResource;
 
-public class CsvAccountReader implements ItemReader<Account> {
+public class CsvInterestReader implements ItemReader<Account> {
     private final FlatFileItemReader<Account> reader;
 
-    public CsvAccountReader() {
+    public CsvInterestReader() {
         this.reader = new FlatFileItemReader<>();
-        this.reader.setResource(new ClassPathResource("data.csv"));
+        this.reader.setResource(new ClassPathResource("data_interest.csv"));
 
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-        tokenizer.setNames(new String[]{"accountNumber", "accountHolderFirstName", "accountHolderLastName", "balance"});
+        tokenizer.setNames(new String[]{"accountNumber", "interest"});
         tokenizer.setDelimiter(",");
 
         BeanWrapperFieldSetMapper<Account> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
