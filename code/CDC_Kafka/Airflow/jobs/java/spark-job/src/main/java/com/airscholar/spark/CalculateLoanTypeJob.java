@@ -29,17 +29,22 @@ public class CalculateLoanTypeJob {
         // Calculate loan type score based on available balance
         Dataset<Row> loanTypeScore = df.withColumn("loan_type",
                 org.apache.spark.sql.functions.when(
+                        org.apache.spark.sql.functions.col("balance").lt(0), "D"
+                ).when(
                         org.apache.spark.sql.functions.col("balance").between(0, 49999), "C"
                 ).when(
                         org.apache.spark.sql.functions.col("balance").between(50000, 249999), "B"
                 ).otherwise("A")
         );
 
+        // Select only the account_id and loan_type columns
+        Dataset<Row> accountLoanType = loanTypeScore.select("account_id", "loan_type");
+
         // Table name
         String account_loan_type_table = "ACCOUNT_LOAN_TYPE";
 
         // Write the result to the account_loan_type table
-        loanTypeScore.write()
+        accountLoanType.write()
                 .mode("overwrite")
                 .jdbc(url, account_loan_type_table, properties);
 
