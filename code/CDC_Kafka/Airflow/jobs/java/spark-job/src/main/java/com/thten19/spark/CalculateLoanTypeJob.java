@@ -4,8 +4,12 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class CalculateLoanTypeJob {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // Create a SparkSession
         SparkSession spark = SparkSession.builder()
                 .appName("Calculate Loan Type of Accounts")
@@ -19,12 +23,28 @@ public class CalculateLoanTypeJob {
         properties.setProperty("user", "db2inst1");
         properties.setProperty("password", "passw0rd");
         properties.setProperty("driver", "com.ibm.db2.jcc.DB2Driver");
+        properties.setProperty("isolationLevel", "NONE");
+        //properties.setProperty("batchsize", 10);
 
         // Table name
         String account_table = "ACCOUNT";
 
-        // Read data from DB2 table into a Spark DataFrame
-        Dataset<Row> df = spark.read().jdbc(url, account_table, properties);
+        Dataset<Row> df;
+
+        Connection connection = DriverManager.getConnection(url, properties);
+        try {
+            connection.setAutoCommit(false);
+
+            // Read data from DB2 table into a Spark DataFrame
+            df = spark.read().jdbc(url, account_table, properties);
+
+            connection.commit();
+        } catch (Exception e) {
+            connection.rollback();
+            throw e;
+        } finally {
+            connection.close();
+        }
 
         // Calculate loan type score based on available balance
         Dataset<Row> loanTypeScore = df.withColumn("loan_type",
@@ -46,8 +66,8 @@ public class CalculateLoanTypeJob {
         // Write the result to the account_loan_type table
         accountLoanType.write()
                 .mode("overwrite")
+                .option("batchsize", 10)
                 .jdbc(url, account_loan_type_table, properties);
-
 
         // Stop the SparkSession
         spark.stop();
