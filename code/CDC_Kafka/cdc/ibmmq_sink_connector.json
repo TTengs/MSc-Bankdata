@@ -3,7 +3,7 @@
     "config": {
         "connector.class": "io.confluent.connect.jms.IbmMqSinkConnector",
         "tasks.max": "1",
-        "topics": "sparking_simple_submit_state",
+        "topics": "calculateInterestAndLoanType_state",
         "mq.queue.manager": "QM1",
         "mq.channel": "DEV.APP.SVRCONN",
         "mq.hostname": "ibmmq",
@@ -11,7 +11,7 @@
         "mq.username": "app",
         "mq.password": "passw0rd",
         "mq.transport.type": "client",
-        "jms.destination.name": "SPARK_SUBMIT_STATE",
+        "jms.destination.name": "AIRFLOW_SPRING_SPARK_STATE",
         "jms.destination.type": "queue",
         "value.converter": "org.apache.kafka.connect.storage.StringConverter",
         "key.converter": "org.apache.kafka.connect.storage.StringConverter",

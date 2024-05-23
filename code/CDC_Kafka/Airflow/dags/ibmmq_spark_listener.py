@@ -16,7 +16,7 @@ from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 import json
 import uuid
 
-KAFKA_TOPIC = "AIRFLOW_SPRING_TRIGGER"
+KAFKA_TOPIC = "AIRFLOW_SPARK_TRIGGER"
 
 
 def listen_function(message):
@@ -29,27 +29,26 @@ def event_triggered_function(event, **context):
 
     # use the TriggerDagRunOperator (TDRO) to kick off a downstream DAG
     TriggerDagRunOperator(
-        trigger_dag_id="calculateInterestAndLoanType",
-        trigger_run_id=f"mq_triggered_run_{uuid.uuid4()}",  # unique ID for this run
+        trigger_dag_id="triggerSparkTask",
         task_id=f"triggered_downstream_dag_{uuid.uuid4()}",
         wait_for_completion=False,  # wait for downstream DAG completion
         poke_interval=5,
     ).execute(context)
 
-    print("Trigger Spring Batch job to process the data...")
+    print("Trigger spark job to process the data...")
 
 
 @dag(
-    start_date=datetime(2023, 5, 21),
+    start_date=datetime(2023, 4, 1),
     schedule="@continuous",
     max_active_runs=1,
     catchup=False,
     render_template_as_native_obj=True,
 )
-def listen_to_kafka_mq():
+def listen_for_Spark_trigger():
     listen_for_mq_event = AwaitMessageTriggerFunctionSensor(
-        task_id="listen_for_mq_event",
-        kafka_config_id="kafka_listener",
+        task_id="listen_for_spark_trigger",
+        kafka_config_id="kafka_default",
         topics=[KAFKA_TOPIC],
         # the apply function will be used from within the triggerer, this is
         # why it needs to be a dot notation string
@@ -59,4 +58,4 @@ def listen_to_kafka_mq():
         event_triggered_function=event_triggered_function,
     )
 
-listen_to_kafka_mq()
+listen_for_Spark_trigger()

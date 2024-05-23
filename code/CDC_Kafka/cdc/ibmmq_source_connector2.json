@@ -1,8 +1,8 @@
 {
-    "name": "ibm-mq-source-connector",
+    "name": "ibm-mq-source-connector2",
     "config": {
         "connector.class": "io.confluent.connect.ibm.mq.IbmMQSourceConnector",
-         "kafka.topic": "AIRFLOW_SPRING_TRIGGER",
+         "kafka.topic": "AIRFLOW_SPARK_TRIGGER",
          "mq.hostname": "ibmmq",
          "mq.port": "1414",
          "mq.transport.type": "client",
@@ -10,7 +10,7 @@
          "mq.channel": "DEV.APP.SVRCONN",
          "mq.username": "app",
          "mq.password": "passw0rd",
-         "jms.destination.name": "AIRFLOW_SPRING_TRIGGER",
+         "jms.destination.name": "AIRFLOW_SPARK_TRIGGER",
          "jms.destination.type": "queue",
          "confluent.license": "",
          "confluent.topic.bootstrap.servers": "kafka:29092",

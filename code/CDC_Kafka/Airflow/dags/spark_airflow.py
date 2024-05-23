@@ -38,13 +38,6 @@ word_count_job = SparkSubmitOperator(
     dag=dag
 )
 
-sleeper = BashOperator(
-    task_id="sleeper",
-    bash_command = 'sleep 30',
-    dag=dag,
-    sla=timedelta(seconds=10)
-)
-
 end = PythonOperator(
     task_id="end",
     python_callable = lambda: print("Jobs completed successfully"),

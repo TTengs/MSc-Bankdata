@@ -1,13 +1,25 @@
 import airflow
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.sensors.external_task_sensor import ExternalTaskSensor
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.providers.apache.kafka.operators.produce import ProduceToTopicOperator
 from airflow.operators.bash import BashOperator
-from kafka import KafkaProducer
+from airflow.providers.apache.kafka.operators.consume import ConsumeFromTopicOperator
+from airflow.providers.apache.kafka.triggers.await_message import AwaitMessageTrigger
 import json
+import time
 from datetime import timedelta, datetime
-from utils import on_failure_callback_dag, on_success_callback_dag, on_failure_callback_task, on_success_callback_task, on_execute_callback_task, on_sla_miss_callback_task
+from airflow.models import DagRun
+from airflow import settings
+from utils import (
+    on_failure_callback_dag, 
+    on_success_callback_dag, 
+    on_failure_callback_task, 
+    on_success_callback_task, 
+    on_execute_callback_task, 
+    on_sla_miss_callback_task
+)
 
 dag = DAG(
     dag_id = "calculateInterestAndLoanType",

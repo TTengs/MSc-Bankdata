@@ -11,3 +11,7 @@ curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" 
 echo "Create sink connector for ibm mq"
 
 curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/ibmmq_sink_connector.json
+
+echo "Create second source connector for ibm mq"
+
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @cdc/ibmmq_source_connector2.json
