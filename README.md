@@ -1,5 +1,5 @@
 # MSc-Bankdata
-Den der speciale
+Code repository for the master thesis.
 
-# Fun keybinds
-Shift + CMD + C -> open in external terminal
+# Demo of the application
+https://www.youtube.com/watch?v=9uvhYbi-t-M
